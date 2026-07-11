@@ -1,0 +1,238 @@
+import SectionWatermark from "@/components/SectionWatermark";
+
+const certificates = [
+  {
+    icon: "🐍",
+    year: "2024",
+    title: "Python for Everybody",
+    desc: "Completed an in-depth specialization covering Python fundamentals, data structures, and data visualization.",
+    org: "Coursera · University of Michigan",
+  },
+  {
+    icon: "🌐",
+    year: "2025",
+    title: "The Web Developer Bootcamp",
+    desc: "Mastered full-stack web development covering HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
+    org: "Udemy",
+  },
+  {
+    icon: "🤖",
+    year: "2026",
+    title: "Data Science and Machine Learning",
+    desc: "Learned to analyze data, build predictive models, and develop intelligent systems using ML algorithms.",
+    org: "Coursera",
+  },
+];
+
+// Same sparse programming-glyph motif as VideoCV/About/Academic/Projects/
+// Skills, repositioned once more for variety.
+const glyphs = [
+  {
+    text: "</>",
+    top: 10,
+    left: 6,
+    size: 22,
+    rotate: -9,
+    duration: 9,
+    delay: 0.15,
+  },
+  {
+    text: "{ }",
+    top: 74,
+    left: 91,
+    size: 20,
+    rotate: 7,
+    duration: 10,
+    delay: 0.85,
+  },
+  {
+    text: "01",
+    top: 24,
+    left: 95,
+    size: 13,
+    rotate: 0,
+    duration: 8,
+    delay: 0.45,
+  },
+  {
+    text: ";",
+    top: 89,
+    left: 5,
+    size: 18,
+    rotate: 0,
+    duration: 7,
+    delay: 1.25,
+  },
+  {
+    text: "cert.verify()",
+    top: 15,
+    left: 75,
+    size: 11,
+    rotate: 4,
+    duration: 11,
+    delay: 0.55,
+  },
+  {
+    text: "const badge =>",
+    top: 93,
+    left: 47,
+    size: 11,
+    rotate: -3,
+    duration: 9,
+    delay: 1.5,
+  },
+  {
+    text: "0x6D",
+    top: 5,
+    left: 41,
+    size: 12,
+    rotate: -6,
+    duration: 10,
+    delay: 1.05,
+  },
+  {
+    text: "()",
+    top: 52,
+    left: 2,
+    size: 20,
+    rotate: 0,
+    duration: 8,
+    delay: 0.3,
+  },
+  {
+    text: "npm run test",
+    top: 95,
+    left: 19,
+    size: 11,
+    rotate: 3,
+    duration: 9,
+    delay: 0.95,
+  },
+];
+
+// A muted echo of the VideoCV/About/Academic/Skills navy gradient, layered
+// at low opacity on top of this section's own bg-bgsoft base — same
+// treatment as ProjectsSection, since this section also keeps its own
+// divider lines and slightly different surface color rather than matching
+// the other sections exactly.
+function CertificatesBackdrop() {
+  return (
+    <div
+      aria-hidden
+      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
+    >
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
+        }}
+      />
+      <style>{`
+        @keyframes certsGlyphDrift {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+      `}</style>
+      {glyphs.map((g, i) => (
+        <div
+          key={i}
+          className="absolute"
+          style={{
+            top: `${g.top}%`,
+            left: `${g.left}%`,
+            transform: `rotate(${g.rotate}deg)`,
+          }}
+        >
+          <span
+            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
+            style={{
+              fontSize: g.size,
+              display: "inline-block",
+              animation: `certsGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
+            }}
+          >
+            {g.text}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function CertificatesSection() {
+  return (
+    <section
+      id="certificates"
+      className="relative z-[2] py-[110px] overflow-hidden bg-bgsoft/60 border-b border-line"
+    >
+      <CertificatesBackdrop />
+
+      {/* Glowing top line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
+
+      <div className="px-[5vw] max-w-[1470px] mx-auto relative">
+        <SectionWatermark text="Certs" />
+        <div className="text-center mb-16">
+          <div className="font-mono text-[#64FFDA] text-xs tracking-[3px] uppercase mb-3">
+            Credentials
+          </div>
+          <h2 className="font-display text-[clamp(32px,5vw,50px)] text-paper">
+            Certificates &amp;{" "}
+            <em className="text-[#64FFDA] not-italic italic">Achievements</em>
+          </h2>
+          <p className="text-paperdim mt-3">
+            Verified learning milestones and recognized accomplishments
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {certificates.map((c) => (
+            <div
+              key={c.title}
+              className="group relative rounded-xl border border-line backdrop-blur-sm p-6 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              style={{ backgroundColor: "#06121e" }}
+            >
+              {/* Diagonal shine sweep — same treatment as the Academic
+                  Experience cards, gliding across on hover. */}
+              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
+              </div>
+
+              {/* Corner accent glow on hover — matches the Academic
+                  Experience cards */}
+              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
+
+              <div className="relative z-10 flex items-start justify-between mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center text-lg transition-all duration-300 group-hover:scale-110 group-hover:border-[#64FFDA]/60">
+                  {c.icon}
+                </div>
+                <span className="font-mono text-[10px] px-2.5 py-1 rounded-full border border-[#64FFDA]/40 text-[#64FFDA]">
+                  {c.year}
+                </span>
+              </div>
+              <h3 className="relative z-10 font-display text-lg text-paper">
+                {c.title}
+              </h3>
+              <p className="relative z-10 text-paperdim text-sm mt-2 mb-5 leading-relaxed">
+                {c.desc}
+              </p>
+              <div className="relative z-10 font-mono text-xs text-paperdim mb-2">
+                🎓 {c.org}
+              </div>
+              <a
+                href="#"
+                className="relative z-10 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-[#64FFDA] transition-colors duration-300 group-hover:text-white"
+              >
+                View Certificate
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
