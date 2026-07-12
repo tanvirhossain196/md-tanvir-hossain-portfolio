@@ -9,7 +9,6 @@ import HobbiesOrbit from "@/components/HobbiesOrbit";
 import ContactSection from "@/components/ContactSection";
 import AcademicSection from "@/components/AcademicSection";
 import HomeSection from "@/components/HomeSection";
-import VideoCVSection from "@/components/VideoCVSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
@@ -104,9 +103,6 @@ export default function Home() {
       <main>
         {/* HOME */}
         <HomeSection />
-
-        {/* VIDEO CV */}
-        <VideoCVSection />
 
         {/* ABOUT */}
         <AboutSection />

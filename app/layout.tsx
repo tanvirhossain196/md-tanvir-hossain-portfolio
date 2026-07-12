@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
+import {
+  Fraunces,
+  Inter,
+  JetBrains_Mono,
+  Cormorant_Garamond,
+} from "next/font/google";
 import "./globals.css";
 import AIChatWidget from "@/components/AIChatWidget";
-import DecorRing from "@/components/DecorRing";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -31,10 +35,6 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
   variable: "--font-display",
 });
-
-
-
-
 
 const siteUrl = "https://tanvirhossain.dev";
 
@@ -124,7 +124,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jbmono.variable} ${cormorant.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${inter.variable} ${jbmono.variable} ${cormorant.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -133,7 +136,6 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <div className="noise" aria-hidden="true" />
-        <DecorRing />
         {children}
         <AIChatWidget />
       </body>

@@ -1,131 +1,18 @@
 import SectionWatermark from "@/components/SectionWatermark";
 import AboutTabs from "@/components/AboutTabs";
+import { Quote, GraduationCap, Code2, FolderGit2, Layers } from "lucide-react";
 
-// Same sparse programming-glyph motif used in VideoCVSection, repositioned
-// so the two sections still feel like one continuous surface when you
-// scroll from Video CV straight into About.
-const glyphs = [
-  {
-    text: "</>",
-    top: 10,
-    left: 8,
-    size: 22,
-    rotate: -10,
-    duration: 9,
-    delay: 0,
-  },
-  {
-    text: "{ }",
-    top: 65,
-    left: 90,
-    size: 20,
-    rotate: 8,
-    duration: 10,
-    delay: 1,
-  },
-  {
-    text: "01",
-    top: 22,
-    left: 94,
-    size: 13,
-    rotate: 0,
-    duration: 8,
-    delay: 0.6,
-  },
-  { text: ";", top: 85, left: 6, size: 18, rotate: 0, duration: 7, delay: 1.4 },
-  {
-    text: "npm run build",
-    top: 15,
-    left: 72,
-    size: 11,
-    rotate: 4,
-    duration: 11,
-    delay: 0.4,
-  },
-  {
-    text: "const About =>",
-    top: 90,
-    left: 55,
-    size: 11,
-    rotate: -3,
-    duration: 9,
-    delay: 1.8,
-  },
-  {
-    text: "0x4A",
-    top: 6,
-    left: 42,
-    size: 12,
-    rotate: -6,
-    duration: 10,
-    delay: 0.9,
-  },
-  {
-    text: "()",
-    top: 45,
-    left: 3,
-    size: 20,
-    rotate: 0,
-    duration: 8,
-    delay: 0.2,
-  },
-  {
-    text: "export",
-    top: 95,
-    left: 22,
-    size: 11,
-    rotate: 3,
-    duration: 9,
-    delay: 1.1,
-  },
+const stats = [
+  { icon: GraduationCap, value: "3.73", label: "CGPA" },
+  { icon: Code2, value: "4+", label: "Years Coding" },
+  { icon: FolderGit2, value: "10+", label: "Projects Built" },
+  { icon: Layers, value: "15+", label: "Technologies" },
 ];
 
-// Identical gradient + fixed attachment as VideoCVSection so there's no
-// visible seam between the two sections while scrolling.
-function AboutBackdrop() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    >
-      <style>{`
-        @keyframes aboutGlyphDrift {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
-      {glyphs.map((g, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            top: `${g.top}%`,
-            left: `${g.left}%`,
-            transform: `rotate(${g.rotate}deg)`,
-          }}
-        >
-          <span
-            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
-            style={{
-              fontSize: g.size,
-              display: "inline-block",
-              animation: `aboutGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
-            }}
-          >
-            {g.text}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
+const focusAreas = ["AI", "Web Dev", "UI/UX", "Systems"];
 
 export default function AboutSection() {
   return (
-    // Full-bleed section: the gradient + glyphs cover the entire section
-    // width (edge to edge, same as VideoCVSection), not just the centered
-    // content column. The max-width/padding constraint lives on the inner
-    // wrapper div instead.
     <section
       id="about"
       className="relative z-[2] w-full py-[110px] overflow-hidden"
@@ -135,8 +22,6 @@ export default function AboutSection() {
         backgroundAttachment: "fixed",
       }}
     >
-      <AboutBackdrop />
-
       <div className="relative z-10 px-[5vw] max-w-[1300px] mx-auto">
         <SectionWatermark
           text="About"
@@ -146,14 +31,59 @@ export default function AboutSection() {
           googleFontImport="Fraunces:ital,wght@1,300;1,600"
         />
         <div className="grid lg:grid-cols-[0.7fr_1fr] gap-14 items-start">
-          {/* Image — significantly larger than before, sets the scale for
-              the text column next to it */}
-          <div className="w-full max-w-[560px] aspect-[3/4] lg:aspect-[4/5] rounded-2xl bg-panelsolid border border-line overflow-hidden mx-auto lg:mx-0">
-            <img
-              src="/images/profile/profile.jpg"
-              alt="Md Tanvir Hossain"
-              className="w-full h-full object-cover"
+          {/* Identity panel — replaces the profile photo. Same footprint
+              as the old image slot so the grid proportions next to the
+              text column don't shift. */}
+          <div className="w-full max-w-[560px] aspect-[3/4] lg:aspect-[4/5] rounded-2xl border border-line overflow-hidden mx-auto lg:mx-0 relative flex flex-col justify-between p-8 sm:p-10">
+            <div
+              className="absolute inset-0 -z-10"
+              style={{ backgroundColor: "#06121e" }}
             />
+            <div className="pointer-events-none absolute -top-14 -right-14 w-48 h-48 rounded-full bg-[#64FFDA]/10 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -left-10 w-44 h-44 rounded-full bg-[#64FFDA]/5 blur-3xl" />
+
+            {/* Quote */}
+            <div className="relative z-10">
+              <Quote size={28} className="text-[#64FFDA]/50 mb-4" />
+              <p className="font-serif italic font-light text-paper text-[clamp(18px,2vw,24px)] leading-snug">
+                Turning curiosity into code, and code into something that
+                matters.
+              </p>
+            </div>
+
+            {/* Stats grid */}
+            <div className="relative z-10 grid grid-cols-2 gap-4 my-8">
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-xl border border-line/80 bg-black/20 p-4 flex flex-col gap-2"
+                >
+                  <s.icon
+                    size={18}
+                    strokeWidth={1.75}
+                    className="text-[#64FFDA]"
+                  />
+                  <div className="font-display text-2xl text-paper leading-none">
+                    {s.value}
+                  </div>
+                  <div className="font-mono text-[10px] uppercase tracking-wide text-paperdim">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Focus areas */}
+            <div className="relative z-10 flex flex-wrap gap-2">
+              {focusAreas.map((f) => (
+                <span
+                  key={f}
+                  className="font-mono text-[11px] uppercase tracking-wide px-3 py-1.5 rounded-full border border-[#64FFDA]/30 text-[#64FFDA] bg-[#64FFDA]/5"
+                >
+                  {f}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Text column */}

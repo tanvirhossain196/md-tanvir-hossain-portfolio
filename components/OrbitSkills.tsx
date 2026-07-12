@@ -175,12 +175,10 @@ const DURATION = 20;
 // derived from --orbit-size, so it scales fluidly at every screen size.
 const CHIP_RATIO = 78 / 580; // ≈ 0.1345 — icon chip diameter
 const BAR_RATIO = 36 / 580; // ≈ 0.0621 — little connector line above chip
-const CENTER_RING_RATIO = 118 / 580; // ≈ 0.2034 — dashed ring around center emblem
 const CENTER_CHIP_RATIO = 96 / 580; // ≈ 0.1655 — center "</>" emblem
 
 const chipSize = `calc(var(--orbit-size) * ${CHIP_RATIO})`;
 const barSize = `calc(var(--orbit-size) * ${BAR_RATIO})`;
-const centerRingSize = `calc(var(--orbit-size) * ${CENTER_RING_RATIO})`;
 const centerChipSize = `calc(var(--orbit-size) * ${CENTER_CHIP_RATIO})`;
 
 // Circle bg: a clearer, more standard blend between the panel color and the
@@ -333,8 +331,6 @@ export default function OrbitSkills() {
         }
       `}</style>
 
-      <div className="absolute inset-0 orbit-particles" />
-
       {/* Outer Orbit — sized as a % of the square container */}
       <div
         className="absolute rounded-full border border-dashed border-line/80"
@@ -366,15 +362,7 @@ export default function OrbitSkills() {
       {/* Center icon stays fixed — it's outside both animated rings */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-accent/25"
-          style={{
-            width: centerRingSize,
-            height: centerRingSize,
-            animation: "orbit-cw 18s linear infinite",
-          }}
-        />
-        <div
-          className="relative rounded-full border border-accent/40 flex items-center justify-center text-accent shadow-[0_0_50px_rgba(255,200,0,.25)]"
+          className="relative rounded-full border border-[#64FFDA]/40 flex items-center justify-center text-[#64FFDA] shadow-[0_0_50px_rgba(100,255,218,0.25)]"
           style={{
             width: centerChipSize,
             height: centerChipSize,

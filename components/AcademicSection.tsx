@@ -47,130 +47,8 @@ const academicMoments = [
   },
 ];
 
-// Same sparse programming-glyph motif as VideoCVSection / AboutSection,
-// repositioned again so the run of sections keeps reading as one
-// continuous surface while scrolling.
-const glyphs = [
-  {
-    text: "</>",
-    top: 9,
-    left: 4,
-    size: 22,
-    rotate: -8,
-    duration: 9,
-    delay: 0.3,
-  },
-  {
-    text: "{ }",
-    top: 72,
-    left: 93,
-    size: 20,
-    rotate: 7,
-    duration: 10,
-    delay: 0.8,
-  },
-  {
-    text: "01",
-    top: 30,
-    left: 96,
-    size: 13,
-    rotate: 0,
-    duration: 8,
-    delay: 0.5,
-  },
-  { text: ";", top: 88, left: 3, size: 18, rotate: 0, duration: 7, delay: 1.2 },
-  {
-    text: "git commit",
-    top: 12,
-    left: 80,
-    size: 11,
-    rotate: 4,
-    duration: 11,
-    delay: 0.6,
-  },
-  {
-    text: "class Academic {}",
-    top: 92,
-    left: 48,
-    size: 11,
-    rotate: -3,
-    duration: 9,
-    delay: 1.5,
-  },
-  {
-    text: "0x7C",
-    top: 5,
-    left: 38,
-    size: 12,
-    rotate: -6,
-    duration: 10,
-    delay: 1,
-  },
-  {
-    text: "()",
-    top: 50,
-    left: 2,
-    size: 20,
-    rotate: 0,
-    duration: 8,
-    delay: 0.2,
-  },
-  {
-    text: "return true;",
-    top: 95,
-    left: 20,
-    size: 11,
-    rotate: 3,
-    duration: 9,
-    delay: 0.9,
-  },
-];
-
-// Identical gradient + fixed attachment as VideoCVSection/AboutSection so
-// there's no visible seam anywhere along the scroll.
-function AcademicBackdrop() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    >
-      <style>{`
-        @keyframes academicGlyphDrift {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
-      {glyphs.map((g, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            top: `${g.top}%`,
-            left: `${g.left}%`,
-            transform: `rotate(${g.rotate}deg)`,
-          }}
-        >
-          <span
-            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
-            style={{
-              fontSize: g.size,
-              display: "inline-block",
-              animation: `academicGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
-            }}
-          >
-            {g.text}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function AcademicSection() {
   return (
-    // Full-bleed section: gradient + glyphs cover the entire section width
-    // (edge to edge), same treatment as VideoCVSection/AboutSection. The
-    // max-width/padding constraint lives on the inner wrapper div instead.
     <section
       id="academic"
       className="relative z-[2] w-full py-[110px] overflow-hidden"
@@ -180,8 +58,6 @@ export default function AcademicSection() {
         backgroundAttachment: "fixed",
       }}
     >
-      <AcademicBackdrop />
-
       <div className="relative z-10 px-[5vw] max-w-[1620px] mx-auto">
         <SectionWatermark text="Academic" />
 

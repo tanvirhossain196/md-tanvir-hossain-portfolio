@@ -71,125 +71,6 @@ const skillGroups = [
   },
 ];
 
-// Same sparse programming-glyph motif as VideoCV/About/Academic/Projects,
-// repositioned once more for variety so the run of sections keeps reading
-// as one continuous surface while scrolling.
-const glyphs = [
-  {
-    text: "</>",
-    top: 7,
-    left: 5,
-    size: 22,
-    rotate: -9,
-    duration: 9,
-    delay: 0.1,
-  },
-  {
-    text: "{ }",
-    top: 75,
-    left: 94,
-    size: 20,
-    rotate: 7,
-    duration: 10,
-    delay: 0.7,
-  },
-  {
-    text: "01",
-    top: 25,
-    left: 92,
-    size: 13,
-    rotate: 0,
-    duration: 8,
-    delay: 0.4,
-  },
-  { text: ";", top: 87, left: 4, size: 18, rotate: 0, duration: 7, delay: 1.1 },
-  {
-    text: "npm install",
-    top: 16,
-    left: 76,
-    size: 11,
-    rotate: 4,
-    duration: 11,
-    delay: 0.5,
-  },
-  {
-    text: "interface Skill {}",
-    top: 93,
-    left: 50,
-    size: 11,
-    rotate: -3,
-    duration: 9,
-    delay: 1.4,
-  },
-  {
-    text: "0x5F",
-    top: 4,
-    left: 40,
-    size: 12,
-    rotate: -6,
-    duration: 10,
-    delay: 0.95,
-  },
-  {
-    text: "()",
-    top: 48,
-    left: 2,
-    size: 20,
-    rotate: 0,
-    duration: 8,
-    delay: 0.25,
-  },
-  {
-    text: "async/await",
-    top: 96,
-    left: 20,
-    size: 11,
-    rotate: 3,
-    duration: 9,
-    delay: 1,
-  },
-];
-
-// Identical gradient + fixed attachment as VideoCV/About/Academic so there's
-// no visible seam anywhere along the scroll.
-function SkillsBackdrop() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    >
-      <style>{`
-        @keyframes skillsGlyphDrift {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
-      {glyphs.map((g, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            top: `${g.top}%`,
-            left: `${g.left}%`,
-            transform: `rotate(${g.rotate}deg)`,
-          }}
-        >
-          <span
-            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
-            style={{
-              fontSize: g.size,
-              display: "inline-block",
-              animation: `skillsGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
-            }}
-          >
-            {g.text}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function SkillsSection() {
   return (
     // Full-bleed section: gradient + glyphs cover the entire section width
@@ -204,8 +85,6 @@ export default function SkillsSection() {
         backgroundAttachment: "fixed",
       }}
     >
-      <SkillsBackdrop />
-
       <div className="relative z-10 px-[5vw] max-w-[1480px] mx-auto">
         <SectionWatermark text="Skills" />
         <div className="text-center mb-16">

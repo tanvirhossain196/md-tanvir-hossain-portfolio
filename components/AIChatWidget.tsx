@@ -379,7 +379,7 @@ export default function AIChatWidget() {
               Tanvir&apos;s AI
             </div>
             <div className="font-mono text-[10px] text-[#64FFDA]">
-              Ask me anything ✦
+              Ask me 
             </div>
           </div>
         </div>
@@ -475,9 +475,7 @@ export default function AIChatWidget() {
           <Send size={14} />
         </button>
       </form>
-      <div className="text-center pb-3 font-mono text-[9px] text-paperdim/50">
-        Powered by local logic · Portfolio overview only
-      </div>
+    
     </div>
   );
 }

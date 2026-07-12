@@ -65,15 +65,6 @@ const education: EducationItem[] = [
     docLabel: "View Certificate",
     fileUrl: "/images/documents/ssc-certificate.jpg",
   },
-  {
-    icon: Building2,
-    title: "Junior School Certificate (JSC)",
-    org: "Wisdom School & College",
-    meta: "GPA : 4.25 / 5.00",
-    year: "Completed: 2015",
-    docLabel: "View Certificate",
-    fileUrl: "/images/documents/jsc-certificate.jpg",
-  },
 ];
 
 const basicSkills: CardItem[] = [
@@ -170,7 +161,7 @@ function Card({ children }: { children: ReactNode }) {
       {/* Corner accent glow on hover — matches the Academic Experience cards */}
       <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
 
-      <div className="relative z-10 flex gap-4 w-full">{children}</div>
+      <div className="relative z-10 flex gap-4 w-full min-w-0">{children}</div>
     </div>
   );
 }
@@ -282,7 +273,7 @@ export default function AboutTabs() {
           <button
             key={tab}
             onClick={() => setActive(tab)}
-            className={`at-heading text-base tracking-wide uppercase pb-3 -mb-px border-b-2 transition-colors ${
+            className={`at-heading text-[clamp(13px,1.3vw,15px)] tracking-wide uppercase pb-3 -mb-px border-b-2 transition-colors ${
               active === tab
                 ? "text-[#64FFDA] border-[#64FFDA]"
                 : "text-paperdim border-transparent hover:text-paper"
@@ -298,20 +289,22 @@ export default function AboutTabs() {
           education.map((item) => (
             <Card key={item.title}>
               <IconBox Icon={item.icon} />
-              <div>
-                <h3 className="at-heading font-semibold text-paper text-base leading-snug">
+              <div className="min-w-0 flex-1 break-words">
+                <h3 className="at-heading font-semibold text-paper text-[clamp(13px,1.3vw,16px)] leading-snug">
                   {item.title}
                 </h3>
-                <div className="text-sm text-paperdim mt-1">{item.org}</div>
-                <div className="text-xs font-mono text-[#64FFDA] mt-1.5">
+                <div className="text-[clamp(11px,1vw,13px)] text-paperdim mt-1">
+                  {item.org}
+                </div>
+                <div className="text-[clamp(10px,0.9vw,12px)] font-mono text-[#64FFDA] mt-1.5">
                   {item.meta}
                 </div>
-                <div className="text-xs font-mono text-[#64FFDA]">
+                <div className="text-[clamp(10px,0.9vw,12px)] font-mono text-[#64FFDA]">
                   {item.year}
                 </div>
                 <button
                   onClick={() => setOpenDoc(item)}
-                  className="flex items-center gap-1.5 text-xs font-mono text-paperdim hover:text-[#64FFDA] transition-colors mt-1.5"
+                  className="flex items-center gap-1.5 text-[clamp(10px,0.9vw,12px)] font-mono text-paperdim hover:text-[#64FFDA] transition-colors mt-1.5"
                 >
                   <FileText size={12} />
                   {item.docLabel}
@@ -324,11 +317,11 @@ export default function AboutTabs() {
           basicSkills.map((item) => (
             <Card key={item.title}>
               <IconBox Icon={item.icon} />
-              <div>
-                <h3 className="at-heading font-semibold text-paper text-base">
+              <div className="min-w-0 flex-1 break-words">
+                <h3 className="at-heading font-semibold text-paper text-[clamp(13px,1.3vw,16px)]">
                   {item.title}
                 </h3>
-                <div className="text-sm text-paperdim mt-1">
+                <div className="text-[clamp(11px,1vw,13px)] text-paperdim mt-1">
                   {item.description}
                 </div>
               </div>
@@ -339,11 +332,11 @@ export default function AboutTabs() {
           softSkills.map((item) => (
             <Card key={item.title}>
               <IconBox Icon={item.icon} />
-              <div>
-                <h3 className="at-heading font-semibold text-paper text-base">
+              <div className="min-w-0 flex-1 break-words">
+                <h3 className="at-heading font-semibold text-paper text-[clamp(13px,1.3vw,16px)]">
                   {item.title}
                 </h3>
-                <div className="text-sm text-paperdim mt-1">
+                <div className="text-[clamp(11px,1vw,13px)] text-paperdim mt-1">
                   {item.description}
                 </div>
               </div>

@@ -24,92 +24,6 @@ const certificates = [
   },
 ];
 
-// Same sparse programming-glyph motif as VideoCV/About/Academic/Projects/
-// Skills, repositioned once more for variety.
-const glyphs = [
-  {
-    text: "</>",
-    top: 10,
-    left: 6,
-    size: 22,
-    rotate: -9,
-    duration: 9,
-    delay: 0.15,
-  },
-  {
-    text: "{ }",
-    top: 74,
-    left: 91,
-    size: 20,
-    rotate: 7,
-    duration: 10,
-    delay: 0.85,
-  },
-  {
-    text: "01",
-    top: 24,
-    left: 95,
-    size: 13,
-    rotate: 0,
-    duration: 8,
-    delay: 0.45,
-  },
-  {
-    text: ";",
-    top: 89,
-    left: 5,
-    size: 18,
-    rotate: 0,
-    duration: 7,
-    delay: 1.25,
-  },
-  {
-    text: "cert.verify()",
-    top: 15,
-    left: 75,
-    size: 11,
-    rotate: 4,
-    duration: 11,
-    delay: 0.55,
-  },
-  {
-    text: "const badge =>",
-    top: 93,
-    left: 47,
-    size: 11,
-    rotate: -3,
-    duration: 9,
-    delay: 1.5,
-  },
-  {
-    text: "0x6D",
-    top: 5,
-    left: 41,
-    size: 12,
-    rotate: -6,
-    duration: 10,
-    delay: 1.05,
-  },
-  {
-    text: "()",
-    top: 52,
-    left: 2,
-    size: 20,
-    rotate: 0,
-    duration: 8,
-    delay: 0.3,
-  },
-  {
-    text: "npm run test",
-    top: 95,
-    left: 19,
-    size: 11,
-    rotate: 3,
-    duration: 9,
-    delay: 0.95,
-  },
-];
-
 // A muted echo of the VideoCV/About/Academic/Skills navy gradient, layered
 // at low opacity on top of this section's own bg-bgsoft base — same
 // treatment as ProjectsSection, since this section also keeps its own
@@ -128,34 +42,6 @@ function CertificatesBackdrop() {
             "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
         }}
       />
-      <style>{`
-        @keyframes certsGlyphDrift {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
-      {glyphs.map((g, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            top: `${g.top}%`,
-            left: `${g.left}%`,
-            transform: `rotate(${g.rotate}deg)`,
-          }}
-        >
-          <span
-            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
-            style={{
-              fontSize: g.size,
-              display: "inline-block",
-              animation: `certsGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
-            }}
-          >
-            {g.text}
-          </span>
-        </div>
-      ))}
     </div>
   );
 }

@@ -105,133 +105,6 @@ const projects: Project[] = [
   },
 ];
 
-// Same sparse programming-glyph motif as VideoCV/About/Academic, repositioned
-// once again for variety. Kept faint so it doesn't fight the project cards.
-const glyphs = [
-  {
-    text: "</>",
-    top: 8,
-    left: 6,
-    size: 22,
-    rotate: -9,
-    duration: 9,
-    delay: 0.2,
-  },
-  {
-    text: "{ }",
-    top: 78,
-    left: 92,
-    size: 20,
-    rotate: 7,
-    duration: 10,
-    delay: 0.9,
-  },
-  {
-    text: "01",
-    top: 20,
-    left: 95,
-    size: 13,
-    rotate: 0,
-    duration: 8,
-    delay: 0.5,
-  },
-  { text: ";", top: 90, left: 5, size: 18, rotate: 0, duration: 7, delay: 1.3 },
-  {
-    text: "git push origin",
-    top: 14,
-    left: 74,
-    size: 11,
-    rotate: 4,
-    duration: 11,
-    delay: 0.5,
-  },
-  {
-    text: "function build() {}",
-    top: 94,
-    left: 46,
-    size: 11,
-    rotate: -3,
-    duration: 9,
-    delay: 1.6,
-  },
-  {
-    text: "0x9E",
-    top: 5,
-    left: 40,
-    size: 12,
-    rotate: -6,
-    duration: 10,
-    delay: 1.1,
-  },
-  {
-    text: "()",
-    top: 55,
-    left: 2,
-    size: 20,
-    rotate: 0,
-    duration: 8,
-    delay: 0.3,
-  },
-  {
-    text: "npm test",
-    top: 96,
-    left: 18,
-    size: 11,
-    rotate: 3,
-    duration: 9,
-    delay: 1,
-  },
-];
-
-// A muted echo of the VideoCV/About/Academic navy gradient, layered at low
-// opacity on top of this section's own bg-bgsoft base — ties the section
-// into the same visual family without matching it exactly, since this
-// section keeps its own divider lines and slightly different surface color.
-function ProjectsBackdrop() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    >
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
-        }}
-      />
-      <style>{`
-        @keyframes projectsGlyphDrift {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
-      {glyphs.map((g, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            top: `${g.top}%`,
-            left: `${g.left}%`,
-            transform: `rotate(${g.rotate}deg)`,
-          }}
-        >
-          <span
-            className="font-mono text-paperdim/15 whitespace-nowrap select-none"
-            style={{
-              fontSize: g.size,
-              display: "inline-block",
-              animation: `projectsGlyphDrift ${g.duration}s ease-in-out ${g.delay}s infinite`,
-            }}
-          >
-            {g.text}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function ProjectsSection() {
   const [active, setActive] = useState<Project | null>(null);
 
@@ -255,7 +128,16 @@ export default function ProjectsSection() {
       id="projects"
       className="relative z-[2] py-[70px] overflow-hidden bg-bgsoft/60 border-b border-line"
     >
-      <ProjectsBackdrop />
+      {/* Muted navy gradient overlay — this is the section's background
+          color layer (unchanged). Only the glyph/particle decoration that
+          used to sit inside the same wrapper was removed. */}
+      <div
+        className="absolute inset-0 -z-10 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
+        }}
+      />
 
       {/* Glowing top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
@@ -268,8 +150,8 @@ export default function ProjectsSection() {
             Portfolio
           </div>
           <h2 className="font-display text-[clamp(32px,5vw,50px)] text-paper">
-            My Amazing{" "}
-            <em className="text-[#64FFDA] not-italic italic">Work</em>
+            Featured{" "}
+            <em className="text-[#64FFDA] not-italic italic">Projects</em>
           </h2>
           <p className="text-paperdim mt-3">
             Crafting Excellence — A Showcase of My Creative Journey
