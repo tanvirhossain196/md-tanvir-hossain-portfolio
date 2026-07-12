@@ -1,16 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import {
+  Home,
+  User,
+  GraduationCap,
+  FolderKanban,
+  Sparkles,
+  Award,
+  Gamepad2,
+  Mail,
+  X,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#academic", label: "Academic" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#certificates", label: "Certificates" },
-  { href: "#hobbies", label: "Hobbies" },
-  { href: "#contact", label: "Contact" },
+const navLinks: { href: string; label: string; icon: LucideIcon }[] = [
+  { href: "#home", label: "Home", icon: Home },
+  { href: "#about", label: "About", icon: User },
+  { href: "#academic", label: "Academic", icon: GraduationCap },
+  { href: "#projects", label: "Projects", icon: FolderKanban },
+  { href: "#skills", label: "Skills", icon: Sparkles },
+  { href: "#certificates", label: "Certificates", icon: Award },
+  { href: "#hobbies", label: "Hobbies", icon: Gamepad2 },
+  { href: "#contact", label: "Contact", icon: Mail },
 ];
 
 const RESUME_PDF_PATH = "/cv-pdf/MD_TANVIR_HOSSAIN_CV.pdf";
@@ -103,10 +115,11 @@ function MenuToggleIcon({ open }: { open: boolean }) {
 }
 
 // The slide-down mobile panel + its backdrop. Kept as its own component so
-// Nav() itself stays readable. Design language matches the rest of the
-// site (monospace index numbers, accent glow, hairline borders) instead of
-// a generic full-screen white/black dropdown — meant to feel like part of
-// this portfolio, not a default UI-kit component.
+// Nav() itself stays readable. Redesigned as a compact icon-grid card deck
+// (2 columns) instead of a plain stacked list — reads as a distinct,
+// deliberately-designed menu rather than a generic dropdown, while keeping
+// the blur/glow work light (a single ambient glow, backdrop-blur-md
+// instead of 2xl) so it paints fast on lower-end mobile devices.
 function MobileMenu({
   open,
   onClose,
@@ -124,7 +137,7 @@ function MobileMenu({
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-[90] bg-[#050b14]/70 backdrop-blur-sm transition-opacity duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
+        className={`fixed inset-0 z-[90] bg-[#050b14]/70 backdrop-blur-sm transition-opacity duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -136,55 +149,71 @@ function MobileMenu({
         role="dialog"
         aria-modal="true"
         aria-hidden={!open ? "true" : "false"}
-        className={`fixed inset-x-4 top-[72px] z-[95] origin-top transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
+        className={`fixed inset-x-4 top-[72px] z-[95] origin-top transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
           open
             ? "pointer-events-auto translate-y-0 scale-y-100 opacity-100"
             : "pointer-events-none -translate-y-3 scale-y-95 opacity-0"
         }`}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-2xl">
-          {/* Ambient corner glows — same visual language as the hero backdrop */}
-          <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[60px]" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-[#64FFDA]/5 blur-[60px]" />
-          {/* Oversized watermark glyph, matches the hero's "</>" motif */}
-          <div className="pointer-events-none absolute -bottom-6 -right-4 select-none font-mono text-[90px] font-bold leading-none text-[#64FFDA]/[0.04]">
-            {"</>"}
+        <div className="relative overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md">
+          {/* Single ambient glow — one blur layer instead of three, keeps
+              paint cost low while still giving the panel some depth. */}
+          <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />
+
+          {/* Header row: label + explicit close button, so the panel
+              reads as an intentional app-style menu rather than a bare
+              list of links. */}
+          <div className="relative flex items-center justify-between px-4 pt-4 pb-3">
+            <span className="font-mono text-[10px] uppercase tracking-[3px] text-[#64FFDA]/70">
+              Menu
+            </span>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close menu"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-line/60 text-paperdim transition-colors hover:border-[#64FFDA]/60 hover:text-[#64FFDA]"
+            >
+              <X size={13} />
+            </button>
           </div>
 
-          <ul className="relative flex flex-col gap-0.5 p-3">
+          {/* Icon-grid nav — 2 columns of compact cards instead of a full-
+              width stacked list, a more distinctive/uncommon layout. */}
+          <ul className="relative grid grid-cols-2 gap-2 px-3 pb-3 list-none m-0">
             {navLinks.map((link, index) => {
               const id = link.href.replace("#", "");
               const isActive = activeSection === id && id !== "home";
+              const Icon = link.icon;
 
               return (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={onClose}
-                    className={`group flex items-center gap-3.5 rounded-xl border px-4 py-3.5 transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                    className={`group flex flex-col items-start gap-2.5 rounded-xl border px-3.5 py-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
                       open
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-5 opacity-0"
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-2 opacity-0"
                     } ${
                       isActive
                         ? "border-[#64FFDA]/40 bg-[#64FFDA]/10 text-paper"
-                        : "border-transparent text-paperdim/70 hover:border-[#64FFDA]/30 hover:bg-[#64FFDA]/[0.06] hover:text-paper"
+                        : "border-line/50 text-paperdim/70 hover:border-[#64FFDA]/30 hover:bg-[#64FFDA]/[0.06] hover:text-paper"
                     }`}
                     style={{
-                      transitionDelay: open ? `${70 + index * 45}ms` : "0ms",
+                      transitionDelay: open ? `${40 + index * 30}ms` : "0ms",
                     }}
                   >
-                    <span className="font-mono text-[10px] tabular-nums text-[#64FFDA]/60">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-sans text-[13px] font-medium uppercase tracking-[2px]">
-                      {link.label}
-                    </span>
                     <span
-                      aria-hidden="true"
-                      className="ml-auto text-[#64FFDA] opacity-0 transition-opacity duration-300 group-hover:opacity-70"
+                      className={`flex h-8 w-8 items-center justify-center rounded-lg border transition-colors duration-300 ${
+                        isActive
+                          ? "border-[#64FFDA]/50 bg-[#64FFDA]/15 text-[#64FFDA]"
+                          : "border-line/60 text-paperdim group-hover:border-[#64FFDA]/40 group-hover:text-[#64FFDA]"
+                      }`}
                     >
-                      &rarr;
+                      <Icon size={15} strokeWidth={1.9} />
+                    </span>
+                    <span className="font-sans text-[12.5px] font-medium uppercase tracking-[1.5px]">
+                      {link.label}
                     </span>
                   </a>
                 </li>
@@ -193,11 +222,11 @@ function MobileMenu({
           </ul>
 
           <div
-            className={`relative border-t border-line/30 p-3 transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-              open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+            className={`relative border-t border-line/30 p-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+              open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
             }`}
             style={{
-              transitionDelay: open ? `${70 + navLinks.length * 45}ms` : "0ms",
+              transitionDelay: open ? `${40 + navLinks.length * 30}ms` : "0ms",
             }}
           >
             <a
@@ -221,6 +250,7 @@ type IndicatorState = { left: number; width: number; opacity: number };
 
 export default function Nav() {
   const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [indicator, setIndicator] = useState<IndicatorState>({
     left: 0,
     width: 0,
@@ -228,6 +258,38 @@ export default function Nav() {
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+
+  // Tracks how far down the page the user has scrolled, as a 0–100
+  // percentage, so the top accent bar can fill left-to-right as a scroll
+  // progress indicator. Passive listener + rAF throttling keeps this
+  // cheap even on long pages / low-end mobile devices.
+  useEffect(() => {
+    let ticking = false;
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, pct)));
+      ticking = false;
+    }
+
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }
+
+    updateProgress();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
@@ -304,9 +366,16 @@ export default function Nav() {
 
   return (
     <>
-      <div className="fixed top-0 inset-x-0 h-[2px] z-[110] bg-gradient-to-r from-accent via-accentsoft to-accent" />
+      {/* Scroll progress bar — dim track spans the full width, filled bar
+          grows left-to-right as the user scrolls down the page. */}
+      <div className="fixed top-0 inset-x-0 h-[2px] z-[110] bg-line/20">
+        <div
+          className="h-full transition-[width] duration-150 ease-out"
+          style={{ width: `${scrollProgress}%`, backgroundColor: "#64FFDA" }}
+        />
+      </div>
 
-      <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 bg-bg/30 backdrop-blur-xl border-b border-line/40 shadow-[0_4px_30px_rgba(0,0,0,0.25)]">
+      <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 bg-[#0a1420]/90 backdrop-blur-xl border-b border-[#64FFDA]/10 shadow-[0_4px_30px_rgba(0,0,0,0.35)]">
         {/* Logo - Left */}
         <a href="#home" className="group shrink-0 flex items-center">
           <Logo />
