@@ -237,8 +237,27 @@ export default function AIChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const logEndRef = useRef<HTMLDivElement>(null);
+
+  // Tracks whether the page is actively being scrolled right now. While
+  // scrolling: show the full "Ask Tanvir's AI" label. Once scrolling stops
+  // (300ms of no scroll events): smoothly collapse back to icon-only, so
+  // the button stays compact and out of the way at rest.
+  useEffect(() => {
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    function handleScroll() {
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => setIsScrolling(false), 300);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   // Close the popup on any click outside it — the X button still works too,
   // this just adds the "click anywhere else on the page" behavior.
@@ -331,7 +350,9 @@ export default function AIChatWidget() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 left-6 z-[200] flex items-center gap-2.5 bg-panelsolid border border-line rounded-full pl-2.5 pr-5 py-2.5 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-all duration-300 hover:border-[#64FFDA]/50 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-10px_rgba(100,255,218,0.35)]"
+        className={`fixed bottom-6 left-6 z-[200] flex items-center bg-panelsolid border border-line rounded-full py-2.5 pl-2.5 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-all duration-300 hover:border-[#64FFDA]/50 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-10px_rgba(100,255,218,0.35)] ${
+          isScrolling ? "gap-2.5 pr-5" : "gap-0 pr-2.5"
+        }`}
       >
         <style>{`
           @keyframes chatRingSpin {
@@ -355,7 +376,15 @@ export default function AIChatWidget() {
           </span>
           <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-panelsolid" />
         </span>
-        <span className="font-mono text-xs text-paper">
+        {/* Label smoothly expands/collapses via max-width + opacity rather
+            than a hard show/hide, so the transition reads as fluid. */}
+        <span
+          className={`font-mono text-xs text-paper whitespace-nowrap overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+            isScrolling
+              ? "max-w-[160px] opacity-100"
+              : "max-w-0 min-w-0 opacity-0"
+          }`}
+        >
           Ask Tanvir&apos;s AI
         </span>
       </button>
@@ -378,9 +407,7 @@ export default function AIChatWidget() {
             <div className="font-display text-sm text-paper leading-tight">
               Tanvir&apos;s AI
             </div>
-            <div className="font-mono text-[10px] text-[#64FFDA]">
-              Ask me 
-            </div>
+            <div className="font-mono text-[10px] text-[#64FFDA]">Ask me</div>
           </div>
         </div>
         <button
@@ -475,7 +502,6 @@ export default function AIChatWidget() {
           <Send size={14} />
         </button>
       </form>
-    
     </div>
   );
 }
