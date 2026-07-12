@@ -1,16 +1,22 @@
 import SectionWatermark from "@/components/SectionWatermark";
 import { FaReact, FaJava, FaGithub } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
 import type { IconType } from "react-icons";
+import type { LucideIcon } from "lucide-react";
+import { Lock, Smartphone } from "lucide-react";
 import {
   SiHtml5,
   SiCss,
   SiJavascript,
   SiNextdotjs,
   SiTailwindcss,
+  SiBootstrap,
   SiNodedotjs,
   SiExpress,
   SiMongodb,
   SiPostgresql,
+  SiMysql,
+  SiSqlite,
   SiTypescript,
   SiPython,
   SiCplusplus,
@@ -18,19 +24,31 @@ import {
   SiFigma,
   SiGit,
   SiDocker,
+  SiPostman,
+  SiNginx,
+  SiJsonwebtokens,
 } from "react-icons/si";
 
-const techIconMap: Record<string, { icon: IconType; color: string }> = {
+// Accepts icons from both react-icons and lucide-react, since a couple of
+// concept badges (Responsive Design, HTTPS/SSL) use lucide glyphs instead
+// of a brand mark.
+type AnyIcon = IconType | LucideIcon;
+
+const techIconMap: Record<string, { icon: AnyIcon; color: string }> = {
   HTML: { icon: SiHtml5, color: "#E34F26" },
   CSS: { icon: SiCss, color: "#1572B6" },
   JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
   React: { icon: FaReact, color: "#61DAFB" },
   "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
   Tailwind: { icon: SiTailwindcss, color: "#06B6D4" },
+  Bootstrap: { icon: SiBootstrap, color: "#7952B3" },
+  "Responsive Design": { icon: Smartphone, color: "#64FFDA" },
   "Node.js": { icon: SiNodedotjs, color: "#339933" },
   Express: { icon: SiExpress, color: "#FFFFFF" },
   MongoDB: { icon: SiMongodb, color: "#47A248" },
   PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
+  MySQL: { icon: SiMysql, color: "#4479A1" },
+  SQLite: { icon: SiSqlite, color: "#7DD3FC" },
   TypeScript: { icon: SiTypescript, color: "#3178C6" },
   Python: { icon: SiPython, color: "#3776AB" },
   Java: { icon: FaJava, color: "#EA2D2E" },
@@ -40,6 +58,11 @@ const techIconMap: Record<string, { icon: IconType; color: string }> = {
   Git: { icon: SiGit, color: "#F05032" },
   GitHub: { icon: FaGithub, color: "#FFFFFF" },
   Docker: { icon: SiDocker, color: "#2496ED" },
+  Postman: { icon: SiPostman, color: "#FF6C37" },
+  "VS Code": { icon: VscVscode, color: "#007ACC" },
+  "JWT Auth": { icon: SiJsonwebtokens, color: "#FFFFFF" },
+  NGINX: { icon: SiNginx, color: "#009639" },
+  "HTTPS/SSL": { icon: Lock, color: "#64FFDA" },
 };
 
 const skillGroups = [
@@ -47,15 +70,31 @@ const skillGroups = [
     icon: "🖥️",
     title: "Frontend",
     desc: "Building responsive, interactive and visually polished user interfaces.",
-    items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind"],
+    items: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Bootstrap",
+      "Responsive Design",
+    ],
     accent: "#3b82f6", // blue
   },
   {
     icon: "🗄️",
     title: "Backend",
-    desc: "Developing robust server-side logic, REST APIs and database-driven apps.",
-    items: ["Node.js", "Express", "MongoDB", "PostgreSQL"],
+    desc: "Developing robust server-side logic and REST APIs.",
+    items: ["Node.js", "Express"],
     accent: "#22c55e", // green
+  },
+  {
+    icon: "🗃️",
+    title: "Database",
+    desc: "Structured and lightweight data storage across relational and NoSQL systems.",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+    accent: "#ec4899", // pink
   },
   {
     icon: "🧠",
@@ -68,8 +107,15 @@ const skillGroups = [
     icon: "🛠️",
     title: "Tools",
     desc: "Industry-standard tools for design, version control and productivity.",
-    items: ["Figma", "Git", "GitHub", "Docker"],
+    items: ["Figma", "Git", "GitHub", "Docker", "Postman", "VS Code"],
     accent: "#f59e0b", // amber
+  },
+  {
+    icon: "🔐",
+    title: "Security & Performance",
+    desc: "Implementing authentication, encryption and performance-focused deployment.",
+    items: ["JWT Auth", "NGINX", "HTTPS/SSL"],
+    accent: "#ef4444", // red
   },
 ];
 
@@ -100,7 +146,7 @@ export default function SkillsSection() {
             Mastering Expertise — Showcasing Skills with Proficiency
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {skillGroups.map((g) => (
             <div
               key={g.title}
@@ -150,9 +196,7 @@ export default function SkillsSection() {
                       key={item}
                       className="inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1.5 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
                     >
-                      {tech && (
-                        <tech.icon size={12} style={{ color: tech.color }} />
-                      )}
+                      {tech && <tech.icon size={12} color={tech.color} />}
                       {item}
                     </span>
                   );
