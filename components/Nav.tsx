@@ -11,7 +11,6 @@ import {
   Award,
   Gamepad2,
   Mail,
-  X,
   ArrowUpRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -148,44 +147,29 @@ function MobileMenu({
       />
 
       {/* Panel — anchored top-right like a real dropdown on tablet, full-
-          width on narrow phones. Single-column "index list" layout: each
-          row carries a number, icon, label and a reveal-on-active arrow,
-          separated by hairline dividers — reads as a deliberate,
-          editorial-style menu rather than a generic card grid. */}
+          width on narrow phones. Capped at 3/4 of the viewport height on
+          mobile/tablet so it never covers the whole screen; the nav list
+          scrolls internally (flex-1 + overflow-y-auto) if it doesn't fit,
+          while the resume-download footer stays pinned at the bottom. */}
       <div
         role="dialog"
         aria-modal="true"
         aria-hidden={!open ? "true" : "false"}
-        className={`fixed inset-x-4 top-[72px] z-[95] origin-top-right transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] sm:inset-x-auto sm:left-auto sm:right-5 sm:w-[380px] lg:hidden ${
+        className={`fixed inset-x-4 top-[72px] z-[95] max-h-[75vh] origin-top-right transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] sm:inset-x-auto sm:left-auto sm:right-5 sm:w-[380px] lg:hidden ${
           open
             ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
             : "pointer-events-none -translate-y-3 scale-[0.97] opacity-0"
         }`}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md">
+        <div className="relative flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md">
           {/* Single ambient glow — one blur layer instead of three, keeps
               paint cost low while still giving the panel some depth. */}
           <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />
 
-          {/* Header row: label + explicit close button, so the panel
-              reads as an intentional app-style menu rather than a bare
-              list of links. */}
-          <div className="relative flex items-center justify-between px-5 pt-4 pb-3">
-            <span className="font-mono text-[10px] uppercase tracking-[3px] text-[#64FFDA]/70">
-              Menu
-            </span>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close menu"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-line/60 text-paperdim transition-colors hover:border-[#64FFDA]/60 hover:text-[#64FFDA]"
-            >
-              <X size={13} />
-            </button>
-          </div>
-
-          {/* Single-column nav list. */}
-          <ul className="relative flex flex-col px-2 pb-2 list-none m-0">
+          {/* Single-column nav list — scrolls internally once the panel
+              hits its 75vh cap, so overflowing items never push the panel
+              past 3/4 of the screen. */}
+          <ul className="relative m-0 flex min-h-0 flex-1 flex-col overflow-y-auto px-2 pt-3 pb-2 list-none">
             {navLinks.map((link, index) => {
               const id = link.href.replace("#", "");
               const isActive = activeSection === id && id !== "home";
