@@ -146,7 +146,7 @@ function MobileMenu({
         }`}
       />
 
-      {/* Panel — anchored top-right like a real dropdown on tablet, full-
+      {/* Panel — anchored top-left like a real dropdown on tablet, full-
           width on narrow phones. Capped at 3/4 of the viewport height on
           mobile/tablet so it never covers the whole screen; the nav list
           scrolls internally (flex-1 + overflow-y-auto) if it doesn't fit,
@@ -155,16 +155,16 @@ function MobileMenu({
         role="dialog"
         aria-modal="true"
         aria-hidden={!open ? "true" : "false"}
-        className={`fixed inset-x-4 top-[72px] z-[95] max-h-[75vh] origin-top-right transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] sm:inset-x-auto sm:left-auto sm:right-5 sm:w-[380px] lg:hidden ${
+        className={`fixed inset-x-4 top-[72px] z-[220] max-h-[75vh] origin-top-left transform-gpu transition-all duration-500 ease-out will-change-transform sm:inset-x-auto sm:right-auto sm:left-5 sm:w-[380px] lg:hidden ${
           open
             ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none -translate-y-3 scale-[0.97] opacity-0"
+            : "pointer-events-none -translate-y-4 scale-[0.96] opacity-0"
         }`}
       >
         <div className="relative flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md">
           {/* Single ambient glow — one blur layer instead of three, keeps
               paint cost low while still giving the panel some depth. */}
-          <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />
+          <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />
 
           {/* Single-column nav list — scrolls internally once the panel
               hits its 75vh cap, so overflowing items never push the panel
