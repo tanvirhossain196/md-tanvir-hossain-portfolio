@@ -126,7 +126,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-[2] py-[70px] overflow-hidden bg-bgsoft/60 border-b border-line"
+      className="relative z-[2] py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-bgsoft/60 border-b border-line"
     >
       {/* Muted navy gradient overlay — this is the section's background
           color layer (unchanged). Only the glyph/particle decoration that
@@ -143,22 +143,22 @@ export default function ProjectsSection() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
 
-      <div className="px-[5vw] max-w-[1460px] mx-auto relative">
+      <div className="px-5 sm:px-[5vw] max-w-[1460px] mx-auto relative">
         <SectionWatermark text="Work" />
-        <div className="text-center mb-16">
-          <div className="font-mono text-[#64FFDA] text-xs tracking-[3px] uppercase mb-3">
+        <div className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16">
+          <div className="font-mono text-[#64FFDA] text-[11px] sm:text-xs tracking-[2px] sm:tracking-[3px] uppercase mb-2 sm:mb-3">
             Portfolio
           </div>
-          <h2 className="font-display text-[clamp(32px,5vw,50px)] text-paper">
+          <h2 className="font-display text-[clamp(28px,6vw,50px)] text-paper px-2">
             Featured{" "}
             <em className="text-[#64FFDA] not-italic italic">Projects</em>
           </h2>
-          <p className="text-paperdim mt-3">
+          <p className="text-paperdim text-sm sm:text-base mt-2.5 sm:mt-3 px-4 sm:px-0">
             Crafting Excellence — A Showcase of My Creative Journey
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
           {projects.map((p) => (
             <button
               key={p.id}
@@ -175,7 +175,7 @@ export default function ProjectsSection() {
                 <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
               </div>
 
-              <div className="h-56 relative overflow-hidden">
+              <div className="h-48 sm:h-52 lg:h-56 relative overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
@@ -183,20 +183,22 @@ export default function ProjectsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full bg-[#64FFDA] flex items-center justify-center text-[#0A0A0C] shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
-                    <FaPlay size={16} className="ml-1" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#64FFDA] flex items-center justify-center text-[#0A0A0C] shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
+                    <FaPlay size={14} className="ml-1 sm:w-4 sm:h-4" />
                   </div>
                 </div>
               </div>
-              <div className="p-5">
-                <span className="font-mono text-[10px] tracking-wide uppercase px-3 py-1.5 rounded-full border border-[#64FFDA]/40 bg-[#64FFDA]/10 text-[#64FFDA] inline-block mb-3 group-hover:border-[#64FFDA]/70 group-hover:bg-[#64FFDA]/15 transition-colors">
+              <div className="p-4 sm:p-5 lg:p-6">
+                <span className="font-mono text-[9px] sm:text-[10px] tracking-wide uppercase px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-[#64FFDA]/40 bg-[#64FFDA]/10 text-[#64FFDA] inline-block mb-2.5 sm:mb-3 group-hover:border-[#64FFDA]/70 group-hover:bg-[#64FFDA]/15 transition-colors">
                   {p.tag}
                 </span>
-                <h3 className="font-display text-lg text-paper">{p.title}</h3>
-                <p className="text-paperdim text-sm mt-2 leading-relaxed">
+                <h3 className="font-display text-base sm:text-lg text-paper">
+                  {p.title}
+                </h3>
+                <p className="text-paperdim text-[13px] sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                   {p.desc}
                 </p>
-                <span className="inline-flex items-center gap-1.5 mt-4 font-mono text-xs uppercase tracking-wide text-[#64FFDA]">
+                <span className="inline-flex items-center gap-1.5 mt-3 sm:mt-4 font-mono text-[11px] sm:text-xs uppercase tracking-wide text-[#64FFDA]">
                   View Project
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -222,9 +224,9 @@ export default function ProjectsSection() {
             <button
               onClick={() => setActive(null)}
               aria-label="Close"
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 border border-line flex items-center justify-center text-paper hover:border-[#64FFDA] hover:text-[#64FFDA] transition-colors"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 border border-line flex items-center justify-center text-paper hover:border-[#64FFDA] hover:text-[#64FFDA] transition-colors"
             >
-              <FaTimes size={14} />
+              <FaTimes size={13} />
             </button>
 
             <div className="aspect-video w-full bg-black">
@@ -245,33 +247,33 @@ export default function ProjectsSection() {
               )}
             </div>
 
-            <div className="p-8">
-              <span className="font-mono text-[10px] tracking-wide uppercase px-3 py-1.5 rounded-full border border-[#64FFDA]/40 text-[#64FFDA] inline-block mb-4">
+            <div className="p-5 sm:p-6 md:p-8">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-wide uppercase px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-[#64FFDA]/40 text-[#64FFDA] inline-block mb-3 sm:mb-4">
                 {active.category}
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl text-paper mb-4">
+              <h3 className="font-display text-xl sm:text-2xl md:text-3xl text-paper mb-3 sm:mb-4">
                 {active.title}
               </h3>
-              <p className="text-paperdim text-sm leading-relaxed mb-6">
+              <p className="text-paperdim text-[13px] sm:text-sm leading-relaxed mb-5 sm:mb-6">
                 {active.fullDesc}
               </p>
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
                 {active.techTags.map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-[11px] px-3 py-1.5 rounded-md bg-bgsoft border border-line text-paperdim"
+                    className="font-mono text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-bgsoft border border-line text-paperdim"
                   >
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2.5 sm:gap-3">
                 {active.github && (
                   <a
                     href={active.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide px-5 py-3 rounded-md border border-[#64FFDA]/50 text-[#64FFDA] hover:bg-[#64FFDA]/10 hover:border-[#64FFDA] transition-colors"
+                    className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md border border-[#64FFDA]/50 text-[#64FFDA] hover:bg-[#64FFDA]/10 hover:border-[#64FFDA] transition-colors"
                   >
                     <FaGithub size={14} /> Github Repository
                   </a>
@@ -281,7 +283,7 @@ export default function ProjectsSection() {
                     href={active.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide px-5 py-3 rounded-md bg-[#64FFDA] text-[#0A0A0C] font-semibold hover:brightness-110 transition-all"
+                    className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md bg-[#64FFDA] text-[#0A0A0C] font-semibold hover:brightness-110 transition-all"
                   >
                     <FaYoutube size={14} /> Watch on YouTube
                   </a>

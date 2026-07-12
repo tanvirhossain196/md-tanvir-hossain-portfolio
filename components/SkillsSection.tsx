@@ -14,6 +14,7 @@ import {
   SiTypescript,
   SiPython,
   SiCplusplus,
+  SiPhp,
   SiFigma,
   SiGit,
   SiDocker,
@@ -34,6 +35,7 @@ const techIconMap: Record<string, { icon: IconType; color: string }> = {
   Python: { icon: SiPython, color: "#3776AB" },
   Java: { icon: FaJava, color: "#EA2D2E" },
   "C++": { icon: SiCplusplus, color: "#00599C" },
+  PHP: { icon: SiPhp, color: "#8892BF" },
   Figma: { icon: SiFigma, color: "#F24E1E" },
   Git: { icon: SiGit, color: "#F05032" },
   GitHub: { icon: FaGithub, color: "#FFFFFF" },
@@ -59,7 +61,7 @@ const skillGroups = [
     icon: "🧠",
     title: "Languages",
     desc: "Strong foundation in object-oriented and systems programming.",
-    items: ["TypeScript", "Python", "Java", "C++"],
+    items: ["TypeScript", "Python", "Java", "C++", "C", "PHP"],
     accent: "#a855f7", // violet
   },
   {
@@ -78,7 +80,7 @@ export default function SkillsSection() {
     // max-width/padding constraint lives on the inner wrapper div instead.
     <section
       id="skills"
-      className="relative z-[2] w-full py-[110px] overflow-hidden"
+      className="relative z-[2] w-full py-16 sm:py-20 md:py-24 lg:py-[110px] overflow-hidden"
       style={{
         background:
           "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
@@ -87,7 +89,7 @@ export default function SkillsSection() {
     >
       <div className="relative z-10 px-[5vw] max-w-[1480px] mx-auto">
         <SectionWatermark text="Skills" />
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div className="font-mono text-[#64FFDA] text-xs tracking-[3px] uppercase mb-3">
             Expertise
           </div>
@@ -98,11 +100,11 @@ export default function SkillsSection() {
             Mastering Expertise — Showcasing Skills with Proficiency
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
           {skillGroups.map((g) => (
             <div
               key={g.title}
-              className="group relative rounded-2xl border border-line overflow-hidden p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="group relative rounded-2xl border border-line overflow-hidden p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
               style={{
                 background: `linear-gradient(150deg, ${g.accent}3d 0%, #0c1f30f0 55%, #0c1f30 100%)`,
                 borderColor: `${g.accent}40`,
@@ -126,7 +128,7 @@ export default function SkillsSection() {
               />
 
               <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5 border transition-all duration-300 group-hover:scale-110"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 border transition-all duration-300 group-hover:scale-110"
                 style={{
                   backgroundColor: `${g.accent}26`,
                   borderColor: `${g.accent}66`,
@@ -134,8 +136,10 @@ export default function SkillsSection() {
               >
                 {g.icon}
               </div>
-              <h3 className="font-display text-xl text-paper">{g.title}</h3>
-              <p className="text-paperdim text-sm mt-3 mb-6 leading-relaxed">
+              <h3 className="font-display text-lg sm:text-xl text-paper">
+                {g.title}
+              </h3>
+              <p className="text-paperdim text-sm mt-2.5 sm:mt-3 mb-5 sm:mb-6 leading-relaxed">
                 {g.desc}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -144,7 +148,7 @@ export default function SkillsSection() {
                   return (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] px-3 py-1.5 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
+                      className="inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1.5 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
                     >
                       {tech && (
                         <tech.icon size={12} style={{ color: tech.color }} />

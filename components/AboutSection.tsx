@@ -15,7 +15,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative z-[2] w-full py-[110px] overflow-hidden"
+      className="relative z-[2] w-full py-16 sm:py-20 md:py-24 lg:py-[110px] overflow-hidden"
       style={{
         background:
           "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
@@ -30,11 +30,11 @@ export default function AboutSection() {
           fontFamily="'Fraunces', serif"
           googleFontImport="Fraunces:ital,wght@1,300;1,600"
         />
-        <div className="grid lg:grid-cols-[0.7fr_1fr] gap-14 items-start">
+        <div className="grid lg:grid-cols-[0.7fr_1fr] gap-10 sm:gap-12 lg:gap-14 items-start">
           {/* Identity panel — replaces the profile photo. Same footprint
               as the old image slot so the grid proportions next to the
               text column don't shift. */}
-          <div className="w-full max-w-[560px] aspect-[3/4] lg:aspect-[4/5] rounded-2xl border border-line overflow-hidden mx-auto lg:mx-0 relative flex flex-col justify-between p-8 sm:p-10">
+          <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-2xl border border-line overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:gap-0 lg:justify-between lg:p-10 lg:aspect-[4/5]">
             <div
               className="absolute inset-0 -z-10"
               style={{ backgroundColor: "#06121e" }}
@@ -52,21 +52,21 @@ export default function AboutSection() {
             </div>
 
             {/* Stats grid */}
-            <div className="relative z-10 grid grid-cols-2 gap-4 my-8">
+            <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4 lg:my-8">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl border border-line/80 bg-black/20 p-4 flex flex-col gap-2"
+                  className="rounded-xl border border-line/80 bg-black/20 p-3.5 sm:p-4 flex flex-col gap-2"
                 >
                   <s.icon
                     size={18}
                     strokeWidth={1.75}
                     className="text-[#64FFDA]"
                   />
-                  <div className="font-display text-2xl text-paper leading-none">
+                  <div className="font-display text-xl sm:text-2xl text-paper leading-none">
                     {s.value}
                   </div>
-                  <div className="font-mono text-[10px] uppercase tracking-wide text-paperdim">
+                  <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wide text-paperdim">
                     {s.label}
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function AboutSection() {
               {focusAreas.map((f) => (
                 <span
                   key={f}
-                  className="font-mono text-[11px] uppercase tracking-wide px-3 py-1.5 rounded-full border border-[#64FFDA]/30 text-[#64FFDA] bg-[#64FFDA]/5"
+                  className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wide px-2.5 sm:px-3 py-1.5 rounded-full border border-[#64FFDA]/30 text-[#64FFDA] bg-[#64FFDA]/5"
                 >
                   {f}
                 </span>
@@ -94,10 +94,10 @@ export default function AboutSection() {
             <h2 className="font-display text-[clamp(24px,3vw,34px)] text-paper mb-4">
               Software Engineer
             </h2>
-            <p className="text-paperdim text-sm mb-8 max-w-xl">
+            <p className="text-paperdim text-sm mb-6 sm:mb-8 max-w-xl">
               I&apos;m <b className="text-paper">Md Tanvir Hossain</b>, a
-              passionate Software Engineer and CSE student. My work bridges the
-              gap between AI, technology, and design — crafting intelligent,
+              passionate Software Engineer and student. My work bridges the gap
+              between AI, technology, and design — crafting intelligent,
               scalable solutions that seamlessly integrate aesthetics with
               functionality.
             </p>

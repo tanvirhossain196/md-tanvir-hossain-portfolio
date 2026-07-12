@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   Home,
   User,
+  Briefcase,
   GraduationCap,
   FolderKanban,
   Sparkles,
@@ -17,6 +18,7 @@ import type { LucideIcon } from "lucide-react";
 const navLinks: { href: string; label: string; icon: LucideIcon }[] = [
   { href: "#home", label: "Home", icon: Home },
   { href: "#about", label: "About", icon: User },
+  { href: "#experience", label: "Experience", icon: Briefcase },
   { href: "#academic", label: "Academic", icon: GraduationCap },
   { href: "#projects", label: "Projects", icon: FolderKanban },
   { href: "#skills", label: "Skills", icon: Sparkles },

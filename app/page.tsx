@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import AcademicSection from "@/components/AcademicSection";
 import HomeSection from "@/components/HomeSection";
 import AboutSection from "@/components/AboutSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
 
@@ -106,6 +107,9 @@ export default function Home() {
 
         {/* ABOUT */}
         <AboutSection />
+
+        {/* EXPERIENCE */}
+        <ExperienceSection />
 
         {/* ACADEMIC */}
         <AcademicSection />
