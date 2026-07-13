@@ -137,48 +137,27 @@ function AboutTabsFont() {
   );
 }
 
-// Card background: soft navy gradient (top-left lighter → bottom-right
-// darker) matching the reference "Undergraduate Teaching Assistant" card,
-// with a clipped top-right corner for the same angular, badge-like shape.
+// Card background: a soft, mostly-transparent navy wash so the section's
+// own background gradient shows through clearly behind the card, with just
+// a touch of extra darkness for contrast.
 const CARD_GRADIENT =
-  "linear-gradient(145deg, #142a44 0%, #0e1e34 45%, #0a1626 100%)";
-
-// Clip-path that cuts a diagonal notch out of the top-right corner.
-const CORNER_CLIP =
-  "polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%)";
+  "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)";
 
 function Card({ children }: { children: ReactNode }) {
   return (
     <div
-      className="relative group p-4 flex gap-4 border border-[#1c3f5e]/60 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-2 hover:border-[#64FFDA]/50 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+      className="relative p-4 flex gap-4 rounded-xl border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)]"
       style={{
         background: CARD_GRADIENT,
-        clipPath: CORNER_CLIP,
-        WebkitClipPath: CORNER_CLIP,
-        borderRadius: "10px",
       }}
     >
-      {/* Diagonal shine sweep — tinted with the accent teal now instead of
-          plain white, so the motion itself reads as "branded" rather than
-          a generic light-beam effect. */}
-      <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-        <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-      </div>
-
-      {/* Hover tint overlay — a stronger accent wash that fades in on top
-          of the base gradient when the card is hovered. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#64FFDA]/15 via-[#64FFDA]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      {/* Corner accent glow on hover — matches the Academic Experience cards */}
-      <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
-
       <div className="relative z-10 flex gap-4 w-full min-w-0">{children}</div>
     </div>
   );
 }
 function IconBox({ Icon }: { Icon: LucideIcon }) {
   return (
-    <div className="w-11 h-11 shrink-0 rounded-md bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center text-[#64FFDA] transition-colors duration-300 group-hover:bg-[#64FFDA]/20 group-hover:border-[#64FFDA]/60">
+    <div className="w-11 h-11 shrink-0 rounded-md bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center text-[#64FFDA]">
       <Icon size={20} strokeWidth={1.75} />
     </div>
   );
@@ -359,9 +338,9 @@ export default function AboutTabs() {
         href="/cv-pdf/MD_TANVIR_HOSSAIN_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="at-heading group relative mt-5 inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#64FFDA] text-black text-sm uppercase tracking-wide px-5 py-2.5 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(100,255,218,0.6)]"
+        className="at-heading group relative mt-5 inline-flex items-center gap-2 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent text-[#ede8dc] text-sm uppercase tracking-wide px-5 py-2.5 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
       >
-        <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/45 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
+        <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
         <FileText size={13} className="relative z-10" />
         <span className="relative z-10">My Resume</span>
       </a>

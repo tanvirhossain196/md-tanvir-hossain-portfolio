@@ -94,19 +94,17 @@ export default function HomeSection() {
                 of two different tricks. */}
             <a
               href="#about"
-              className="group relative inline-flex items-center overflow-hidden rounded-md border border-line px-7 py-3.5 font-mono text-sm tracking-wide uppercase text-paper transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:shadow-[0_10px_26px_-10px_rgba(100,255,218,0.55)]"
+              className="group relative inline-flex items-center overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent px-7 py-3.5 font-mono text-sm tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
-              <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-[#64FFDA]/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-[#64FFDA]">
-                About Me
-              </span>
+              <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
+              <span className="relative z-10">About Me</span>
             </a>
 
             <a
               href="#projects"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#64FFDA] px-7 py-3.5 font-mono text-sm font-semibold uppercase text-[#0A0A0C] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(100,255,218,0.6)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent px-7 py-3.5 font-mono text-sm font-semibold uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
-              <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/45 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
+              <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <span className="relative z-10">View Work</span>
               <FaArrowRight
                 size={13}

@@ -126,19 +126,12 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-[2] py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-bgsoft/60 border-b border-line"
+      className="relative z-[2] py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden border-b border-line"
+      style={{
+        background:
+          "linear-gradient(345deg, #1e4160 0%, #15304a 55%, #102539 100%)",
+      }}
     >
-      {/* Muted navy gradient overlay — this is the section's background
-          color layer (unchanged). Only the glyph/particle decoration that
-          used to sit inside the same wrapper was removed. */}
-      <div
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(22,36,58,0.6) 0%, rgba(19,68,100,0.45) 55%, rgba(18,94,134,0.32) 100%)",
-        }}
-      />
-
       {/* Glowing top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
@@ -168,10 +161,10 @@ export default function ProjectsSection() {
               key={p.id}
               type="button"
               onClick={() => setActive(p)}
-              className="text-left rounded-xl border border-line backdrop-blur-sm overflow-hidden group relative transition-all duration-300 hover:border-[#64FFDA]/60 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#64FFDA]/60"
+              className="text-left rounded-xl border border-[#F5F1E8]/25 backdrop-blur-sm overflow-hidden group relative transition-all duration-300 hover:border-[#64FFDA]/60 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#64FFDA]/60"
               style={{
                 background:
-                  "linear-gradient(165deg, #0c1f31 0%, #071320 55%, #050d17 100%)",
+                  "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",
               }}
             >
               {/* Diagonal shine sweep — same treatment as the Academic

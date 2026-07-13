@@ -78,8 +78,11 @@ export default function AcademicSection() {
           {academicMoments.map((m) => (
             <div
               key={m.title}
-              className="group relative rounded-2xl border border-line overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
-              style={{ backgroundColor: "#06121e" }}
+              className="group relative rounded-2xl border border-[#ede8dc]/25 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              style={{
+                background:
+                  "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)",
+              }}
             >
               {/* Diagonal shine sweep — a soft light beam glides across the
                   whole card on hover. Sits above everything (z-20) but is
@@ -98,7 +101,7 @@ export default function AcademicSection() {
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 {/* Gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06121e] via-[#06121e]/10 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1626] via-[#0a1626]/10 to-transparent opacity-80" />
 
                 {/* Year badge */}
                 <span className="absolute top-4 right-4 font-mono text-[11px] font-semibold bg-[#64FFDA]/20 text-[#64FFDA] px-3 py-1.5 rounded-full border border-[#64FFDA]/40 backdrop-blur-sm transition-all duration-300 group-hover:bg-[#64FFDA]/30 group-hover:border-[#64FFDA]/70">

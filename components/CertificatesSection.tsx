@@ -24,36 +24,16 @@ const certificates = [
   },
 ];
 
-// A muted echo of the VideoCV/About/Academic/Skills navy gradient, layered
-// at low opacity on top of this section's own bg-bgsoft base — same
-// treatment as ProjectsSection, since this section also keeps its own
-// divider lines and slightly different surface color rather than matching
-// the other sections exactly.
-function CertificatesBackdrop() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    >
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(22,36,58,0.6) 0%, rgba(19,68,100,0.45) 55%, rgba(18,94,134,0.32) 100%)",
-        }}
-      />
-    </div>
-  );
-}
-
 export default function CertificatesSection() {
   return (
     <section
       id="certificates"
-      className="relative z-[2] py-[110px] overflow-hidden bg-bgsoft/60 border-b border-line"
+      className="relative z-[2] py-[110px] overflow-hidden border-b border-line"
+      style={{
+        background:
+          "linear-gradient(345deg, #1e4160 0%, #15304a 55%, #102539 100%)",
+      }}
     >
-      <CertificatesBackdrop />
-
       {/* Glowing top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
@@ -80,10 +60,10 @@ export default function CertificatesSection() {
           {certificates.map((c) => (
             <div
               key={c.title}
-              className="group relative rounded-xl border border-line backdrop-blur-sm p-6 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="group relative rounded-xl border border-[#F5F1E8]/25 backdrop-blur-sm p-6 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/60 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
               style={{
                 background:
-                  "linear-gradient(165deg, #0c1f31 0%, #071320 55%, #050d17 100%)",
+                  "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",
               }}
             >
               {/* Diagonal shine sweep — same treatment as the Academic

@@ -34,10 +34,10 @@ export default function AboutSection() {
           {/* Identity panel — replaces the profile photo. Same footprint
               as the old image slot so the grid proportions next to the
               text column don't shift. */}
-          <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-2xl border border-line overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:gap-0 lg:justify-between lg:p-10 lg:aspect-[4/5]">
+          <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-2xl border border-[#ede8dc]/25 overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:gap-0 lg:justify-between lg:p-10 lg:aspect-[4/5]">
             <div
               className="absolute inset-0 -z-10"
-              style={{ backgroundColor: "#0e1e34" }}
+              style={{ backgroundColor: "rgba(6,14,26,0.12)" }}
             />
 
             {/* Quote */}
@@ -54,7 +54,7 @@ export default function AboutSection() {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl border border-line/80 bg-black/20 p-3.5 sm:p-4 flex flex-col gap-2"
+                  className="rounded-xl border border-[#ede8dc]/15 bg-black/5 p-3.5 sm:p-4 flex flex-col gap-2"
                 >
                   <s.icon
                     size={18}

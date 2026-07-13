@@ -34,18 +34,12 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative z-[2] py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-bgsoft/60 border-b border-line"
+      className="relative z-[2] py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden border-b border-line"
+      style={{
+        background:
+          "linear-gradient(345deg, #1e4160 0%, #15304a 55%, #102539 100%)",
+      }}
     >
-      {/* Muted navy gradient overlay — same treatment as the Projects
-          section so both sections share the identical background split. */}
-      <div
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(22,36,58,0.6) 0%, rgba(19,68,100,0.45) 55%, rgba(18,94,134,0.32) 100%)",
-        }}
-      />
-
       {/* Glowing top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
@@ -77,29 +71,12 @@ export default function ExperienceSection() {
               <div
                 key={exp.role}
                 tabIndex={0}
-                className="group relative flex text-left rounded-lg border border-[#64FFDA]/25 overflow-hidden transition-all duration-300 shadow-[0_10px_34px_-16px_rgba(100,255,218,0.25)] hover:border-[#64FFDA]/60 focus-visible:border-[#64FFDA]/60 hover:-translate-y-1.5 focus-visible:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.4)] focus-visible:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.4)] outline-none focus-visible:ring-1 focus-visible:ring-[#64FFDA]/50"
+                className="group relative flex text-left rounded-lg border border-[#ede8dc]/35 overflow-hidden transition-all duration-300 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.45)] hover:border-[#64FFDA] focus-visible:border-[#64FFDA] hover:-translate-y-1.5 focus-visible:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] focus-visible:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] outline-none focus-visible:ring-1 focus-visible:ring-[#64FFDA]/50"
                 style={{
                   background:
-                    "linear-gradient(165deg, #12293f 0%, #0a1a2b 55%, #071522 100%)",
-                  clipPath:
-                    "polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%)",
+                    "linear-gradient(165deg, #17324c 0%, #0e2338 55%, #0a1e2e 100%)",
                 }}
               >
-                {/* Top accent bar — a slim gradient edge that gives the
-                    card a clear visual anchor against the section
-                    background, without relying on hover to be noticed. */}
-                <div className="absolute top-0 left-0 right-[22px] h-[2px] bg-gradient-to-r from-[#64FFDA]/70 via-[#64FFDA]/30 to-transparent z-20" />
-                {/* Folded-corner tab — the card reads as a personnel record,
-                    so the top-right corner is "turned up" like a dossier page. */}
-                <div
-                  className="absolute top-0 right-0 w-[22px] h-[22px] z-20 pointer-events-none transition-colors duration-300 group-hover:[background:linear-gradient(135deg,rgba(100,255,218,0.55),rgba(6,18,30,0.95))]"
-                  style={{
-                    clipPath: "polygon(100% 0, 100% 100%, 0 0)",
-                    background:
-                      "linear-gradient(135deg, rgba(100,255,218,0.22), rgba(6,18,30,0.95))",
-                  }}
-                />
-
                 {/* Diagonal shine sweep — same treatment as the Projects
                     section cards, for a consistent hover motion across the site. */}
                 <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">

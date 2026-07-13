@@ -116,12 +116,7 @@ function MenuToggleIcon({ open }: { open: boolean }) {
   );
 }
 
-// The slide-down mobile panel + its backdrop. Kept as its own component so
-// Nav() itself stays readable. Redesigned as a compact icon-grid card deck
-// (2 columns) instead of a plain stacked list — reads as a distinct,
-// deliberately-designed menu rather than a generic dropdown, while keeping
-// the blur/glow work light (a single ambient glow, backdrop-blur-md
-// instead of 2xl) so it paints fast on lower-end mobile devices.
+
 function MobileMenu({
   open,
   onClose,
@@ -161,7 +156,13 @@ function MobileMenu({
             : "pointer-events-none -translate-y-4 scale-[0.96] opacity-0"
         }`}
       >
-        <div className="relative flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-[#64FFDA]/25 bg-[#0a1420]/95 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md">
+        <div
+          className="relative flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-[#64FFDA]/25 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md"
+          style={{
+            background:
+              "linear-gradient(145deg, rgba(20,42,68,0.4) 0%, rgba(14,30,52,0.4) 45%, rgba(10,22,38,0.4) 100%)",
+          }}
+        >
           {/* Single ambient glow — one blur layer instead of three, keeps
               paint cost low while still giving the panel some depth. */}
           <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />

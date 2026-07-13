@@ -84,8 +84,11 @@ export default function HobbiesOrbit() {
           {hobbies.map((h) => (
             <div
               key={h.title}
-              className="hobby-card group relative rounded-2xl border border-line backdrop-blur-sm px-5 sm:px-6 md:px-7 lg:px-8 py-6 sm:py-7 flex flex-col items-center text-center gap-5 sm:gap-6 transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
-              style={{ backgroundColor: "#06121e" }}
+              className="hobby-card group relative rounded-2xl border border-[#ede8dc]/25 backdrop-blur-sm px-5 sm:px-6 md:px-7 lg:px-8 py-6 sm:py-7 flex flex-col items-center text-center gap-5 sm:gap-6 transition-all duration-500 hover:border-[#64FFDA]/60 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              style={{
+                background:
+                  "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)",
+              }}
             >
               {/* Diagonal shine sweep — same treatment as the Academic
                   Experience cards, gliding across on hover. */}

@@ -151,13 +151,11 @@ export default function SkillsSection() {
           {skillGroups.map((g) => (
             <div
               key={g.title}
-              className="group relative rounded-2xl border-[var(--border-c)] border overflow-hidden p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[var(--border-h)] hover:shadow-[0_25px_55px_-18px_var(--glow-h)]"
+              className="group relative rounded-2xl border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#64FFDA]/60 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
               style={
                 {
-                  background: `linear-gradient(150deg, ${g.accent}1f 0%, #101f2fe8 50%, #0d1d2c 100%)`,
-                  "--border-c": `${g.accent}30`,
-                  "--border-h": `${g.accent}90`,
-                  "--glow-h": `${g.accent}59`,
+                  background:
+                    "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)",
                 } as CSSProperties
               }
             >
@@ -169,25 +167,9 @@ export default function SkillsSection() {
 
               {/* Corner accent glow on hover — matches the Academic
                   Experience cards */}
-              <div
-                className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500"
-                style={{ background: `${g.accent}26` }}
-              />
+              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500 bg-[#64FFDA]/15" />
 
-              {/* Top accent bar — the clearest visual cue that each card
-                  belongs to a different category */}
-              <div
-                className="absolute top-0 left-0 right-0 h-1"
-                style={{ background: g.accent }}
-              />
-
-              <div
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 border transition-all duration-300 group-hover:scale-110"
-                style={{
-                  backgroundColor: `${g.accent}26`,
-                  borderColor: `${g.accent}66`,
-                }}
-              >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 border transition-all duration-300 group-hover:scale-110 bg-[#64FFDA]/10 border-[#64FFDA]/30">
                 {g.icon}
               </div>
               <h3 className="font-display text-lg sm:text-xl text-paper">
@@ -196,21 +178,21 @@ export default function SkillsSection() {
               <p className="text-paperdim text-sm mt-2.5 sm:mt-3 mb-5 sm:mb-6 leading-relaxed">
                 {g.desc}
               </p>
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
                 {g.items.map((item) => {
                   const tech = techIconMap[item];
                   return (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-[12.5px] lg:text-[13px] px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-[12px] lg:text-[13px] px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
                     >
                       {tech && (
                         <tech.icon
-                          className="w-[13px] h-[13px] sm:w-[15px] sm:h-[15px]"
+                          className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] shrink-0"
                           color={tech.color}
                         />
                       )}
-                      {item}
+                      <span className="truncate">{item}</span>
                     </span>
                   );
                 })}
