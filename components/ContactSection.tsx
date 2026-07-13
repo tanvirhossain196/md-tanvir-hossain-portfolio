@@ -49,7 +49,7 @@ function ContactBackdrop() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
+            "linear-gradient(135deg, rgba(22,36,58,0.6) 0%, rgba(19,68,100,0.45) 55%, rgba(18,94,134,0.32) 100%)",
         }}
       />
     </div>
@@ -74,6 +74,10 @@ export default function ContactSection() {
       {/* glowing top line — same treatment as the Certificates section */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
+
+      {/* Glowing bottom line — same treatment as the top line, just lighter */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent blur-[2px]" />
 
       <ContactBackdrop />
 
@@ -130,7 +134,10 @@ export default function ContactSection() {
 
           <div
             className="rounded-xl border border-line p-8"
-            style={{ backgroundColor: "#06121e" }}
+            style={{
+              background:
+                "linear-gradient(165deg, #0c1f31 0%, #071320 55%, #050d17 100%)",
+            }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>

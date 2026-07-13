@@ -39,7 +39,7 @@ function CertificatesBackdrop() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(5,11,20,0.55) 0%, rgba(10,31,48,0.38) 55%, rgba(14,44,66,0.25) 100%)",
+            "linear-gradient(135deg, rgba(22,36,58,0.6) 0%, rgba(19,68,100,0.45) 55%, rgba(18,94,134,0.32) 100%)",
         }}
       />
     </div>
@@ -57,6 +57,10 @@ export default function CertificatesSection() {
       {/* Glowing top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/70 to-transparent" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent blur-[2px]" />
+
+      {/* Glowing bottom line — same treatment as the top line, just lighter */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#64FFDA]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent blur-[2px]" />
 
       <div className="px-[5vw] max-w-[1470px] mx-auto relative">
         <SectionWatermark text="Certs" />
@@ -77,7 +81,10 @@ export default function CertificatesSection() {
             <div
               key={c.title}
               className="group relative rounded-xl border border-line backdrop-blur-sm p-6 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
-              style={{ backgroundColor: "#06121e" }}
+              style={{
+                background:
+                  "linear-gradient(165deg, #0c1f31 0%, #071320 55%, #050d17 100%)",
+              }}
             >
               {/* Diagonal shine sweep — same treatment as the Academic
                   Experience cards, gliding across on hover. */}

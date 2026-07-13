@@ -137,15 +137,26 @@ function AboutTabsFont() {
   );
 }
 
-// Card background: the exact navy shade the user picked (sampled from
-// their reference swatch image) — a flat solid color, no blending.
-const CARD_BG = "#06121e";
+// Card background: soft navy gradient (top-left lighter → bottom-right
+// darker) matching the reference "Undergraduate Teaching Assistant" card,
+// with a clipped top-right corner for the same angular, badge-like shape.
+const CARD_GRADIENT =
+  "linear-gradient(145deg, #142a44 0%, #0e1e34 45%, #0a1626 100%)";
+
+// Clip-path that cuts a diagonal notch out of the top-right corner.
+const CORNER_CLIP =
+  "polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%)";
 
 function Card({ children }: { children: ReactNode }) {
   return (
     <div
-      className="relative group rounded-xl p-4 flex gap-4 border border-line overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-[#64FFDA]/50 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
-      style={{ backgroundColor: CARD_BG }}
+      className="relative group p-4 flex gap-4 border border-[#1c3f5e]/60 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-2 hover:border-[#64FFDA]/50 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+      style={{
+        background: CARD_GRADIENT,
+        clipPath: CORNER_CLIP,
+        WebkitClipPath: CORNER_CLIP,
+        borderRadius: "10px",
+      }}
     >
       {/* Diagonal shine sweep — tinted with the accent teal now instead of
           plain white, so the motion itself reads as "branded" rather than
@@ -155,7 +166,7 @@ function Card({ children }: { children: ReactNode }) {
       </div>
 
       {/* Hover tint overlay — a stronger accent wash that fades in on top
-          of the base color when the card is hovered. */}
+          of the base gradient when the card is hovered. */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#64FFDA]/15 via-[#64FFDA]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Corner accent glow on hover — matches the Academic Experience cards */}

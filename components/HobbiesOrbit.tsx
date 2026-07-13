@@ -61,7 +61,7 @@ export default function HobbiesOrbit() {
       className="relative z-[2] w-full py-14 sm:py-16 md:py-20 lg:py-24 xl:py-[110px] overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
+          "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
         backgroundAttachment: "fixed",
       }}
     >

@@ -3,7 +3,7 @@ import {
   SiTailwindcss,
   SiNextdotjs,
   SiPython,
-  SiDaisyui,
+  SiTypescript,
   SiBootstrap,
   SiJavascript,
   SiNodedotjs,
@@ -15,15 +15,15 @@ import {
   SiMysql,
   SiGit,
   SiFirebase,
-  SiArduino,
+  SiPostgresql,
+  SiMongodb,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
-import { Radio } from "lucide-react";
 import type { IconType } from "react-icons";
 
 type Skill = {
   label: string;
-  Icon: IconType | typeof Radio | null;
+  Icon: IconType | null;
   iconColor: string;
   barColor: string;
 };
@@ -35,7 +35,7 @@ const allSkills: Skill[] = [
   {
     label: "C++",
     Icon: SiCplusplus,
-    iconColor: "#659AD2",
+    iconColor: "#1E88E5",
     barColor: "#3B82F6",
   },
   { label: "C#", Icon: null, iconColor: "#A855F7", barColor: "#A855F7" },
@@ -58,10 +58,10 @@ const allSkills: Skill[] = [
     barColor: "#3B82F6",
   },
   {
-    label: "DaisyUI",
-    Icon: SiDaisyui,
-    iconColor: "#22D3AA",
-    barColor: "#22C55E",
+    label: "TypeScript",
+    Icon: SiTypescript,
+    iconColor: "#3178C6",
+    barColor: "#3B82F6",
   },
   {
     label: "Bootstrap",
@@ -81,19 +81,24 @@ const allSkills: Skill[] = [
     iconColor: "#6CC24A",
     barColor: "#22C55E",
   },
-  { label: "RF", Icon: Radio, iconColor: "#D4D4D8", barColor: "#D4D4D8" },
+  {
+    label: "MongoDB",
+    Icon: SiMongodb,
+    iconColor: "#47A248",
+    barColor: "#22C55E",
+  },
   { label: "Figma", Icon: SiFigma, iconColor: "#F24E1E", barColor: "#EF4444" },
   { label: "CSS", Icon: SiCss, iconColor: "#3B82F6", barColor: "#3B82F6" },
   {
     label: "GitHub",
     Icon: SiGithub,
-    iconColor: "#E5E7EB",
+    iconColor: "#FFFFFF",
     barColor: "#D4D4D8",
   },
   { label: "HTML", Icon: SiHtml5, iconColor: "#E85D2F", barColor: "#EF4444" },
   { label: "Java", Icon: FaJava, iconColor: "#EA6B0C", barColor: "#EF4444" },
-  { label: "PHP", Icon: SiPhp, iconColor: "#8892BF", barColor: "#A855F7" },
-  { label: "MySQL", Icon: SiMysql, iconColor: "#4479A1", barColor: "#3B82F6" },
+  { label: "PHP", Icon: SiPhp, iconColor: "#6366F1", barColor: "#A855F7" },
+  { label: "MySQL", Icon: SiMysql, iconColor: "#0284C7", barColor: "#3B82F6" },
   { label: "Git", Icon: SiGit, iconColor: "#F05032", barColor: "#EF4444" },
   {
     label: "Firebase",
@@ -102,10 +107,10 @@ const allSkills: Skill[] = [
     barColor: "#F59E0B",
   },
   {
-    label: "Arduino",
-    Icon: SiArduino,
-    iconColor: "#00979D",
-    barColor: "#F59E0B",
+    label: "PostgreSQL",
+    Icon: SiPostgresql,
+    iconColor: "#4169E1",
+    barColor: "#3B82F6",
   },
 ];
 
@@ -114,7 +119,7 @@ const ringOuter = [
   allSkills[0], // C++
   allSkills[1], // C#
   allSkills[2], // Tailwind
-  allSkills[5], // DaisyUI
+  allSkills[5], // TypeScript
   allSkills[6], // Bootstrap
   allSkills[7], // JS
   allSkills[10], // Figma
@@ -130,11 +135,11 @@ const ringInner = [
   allSkills[3], // Next.js
   allSkills[4], // Python
   allSkills[8], // Node.js
-  allSkills[9], // RF
+  allSkills[9], // MongoDB
   allSkills[13], // HTML
   allSkills[14], // Java
   allSkills[18], // Firebase
-  allSkills[19], // Arduino
+  allSkills[19], // PostgreSQL
 ];
 
 // ---------------------------------------------------------------------
@@ -184,7 +189,7 @@ const centerChipSize = `calc(var(--orbit-size) * ${CENTER_CHIP_RATIO})`;
 // Circle bg: a clearer, more standard blend between the panel color and the
 // section/page bg color (theme("colors.paper") token).
 const CHIP_BG =
-  "color-mix(in srgb, theme(colors.panelsolid) 55%, theme(colors.paper) 45%)";
+  "color-mix(in srgb, theme(colors.panelsolid) 82%, theme(colors.paper) 18%)";
 
 function Ring({
   skills,
@@ -255,11 +260,12 @@ function Ring({
                 />
 
                 <div
-                  className="rounded-full border border-line/90 flex flex-col items-center justify-center gap-0.5 shadow-[0_10px_28px_-8px_rgba(0,0,0,.6),inset_0_1px_0_rgba(255,255,255,.04)] transition-transform duration-300 hover:scale-105"
+                  className="rounded-full border flex flex-col items-center justify-center gap-0.5 shadow-[0_10px_28px_-8px_rgba(0,0,0,.6),inset_0_1px_0_rgba(255,255,255,.04)] transition-transform duration-300 hover:scale-105"
                   style={{
                     width: chipSize,
                     height: chipSize,
                     backgroundColor: CHIP_BG,
+                    borderColor: "rgba(100,255,218,0.18)",
                   }}
                 >
                   {Icon ? (
@@ -333,8 +339,9 @@ export default function OrbitSkills() {
 
       {/* Outer Orbit — sized as a % of the square container */}
       <div
-        className="absolute rounded-full border border-dashed border-line/80"
+        className="absolute rounded-full border border-dashed"
         style={{
+          borderColor: "rgba(100,255,218,0.14)",
           width: `${OUTER_RADIUS_PCT * 200}%`,
           height: `${OUTER_RADIUS_PCT * 200}%`,
           left: `${50 - OUTER_RADIUS_PCT * 100}%`,
@@ -344,8 +351,9 @@ export default function OrbitSkills() {
 
       {/* Inner Orbit */}
       <div
-        className="absolute rounded-full border border-dashed border-line/70"
+        className="absolute rounded-full border border-dashed"
         style={{
+          borderColor: "rgba(100,255,218,0.11)",
           width: `${INNER_RADIUS_PCT * 200}%`,
           height: `${INNER_RADIUS_PCT * 200}%`,
           left: `${50 - INNER_RADIUS_PCT * 100}%`,

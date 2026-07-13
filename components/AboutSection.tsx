@@ -18,7 +18,7 @@ export default function AboutSection() {
       className="relative z-[2] w-full py-16 sm:py-20 md:py-24 lg:py-[110px] overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
+          "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
         backgroundAttachment: "fixed",
       }}
     >
@@ -37,10 +37,8 @@ export default function AboutSection() {
           <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-2xl border border-line overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:gap-0 lg:justify-between lg:p-10 lg:aspect-[4/5]">
             <div
               className="absolute inset-0 -z-10"
-              style={{ backgroundColor: "#06121e" }}
+              style={{ backgroundColor: "#0e1e34" }}
             />
-            <div className="pointer-events-none absolute -top-14 -right-14 w-48 h-48 rounded-full bg-[#64FFDA]/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-16 -left-10 w-44 h-44 rounded-full bg-[#64FFDA]/5 blur-3xl" />
 
             {/* Quote */}
             <div className="relative z-10">

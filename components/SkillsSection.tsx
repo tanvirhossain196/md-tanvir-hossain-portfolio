@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import SectionWatermark from "@/components/SectionWatermark";
 import { FaReact, FaJava, FaGithub } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
@@ -129,7 +130,7 @@ export default function SkillsSection() {
       className="relative z-[2] w-full py-16 sm:py-20 md:py-24 lg:py-[110px] overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
+          "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
         backgroundAttachment: "fixed",
       }}
     >
@@ -150,11 +151,15 @@ export default function SkillsSection() {
           {skillGroups.map((g) => (
             <div
               key={g.title}
-              className="group relative rounded-2xl border border-line overflow-hidden p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
-              style={{
-                background: `linear-gradient(150deg, ${g.accent}3d 0%, #0c1f30f0 55%, #0c1f30 100%)`,
-                borderColor: `${g.accent}40`,
-              }}
+              className="group relative rounded-2xl border-[var(--border-c)] border overflow-hidden p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[var(--border-h)] hover:shadow-[0_25px_55px_-18px_var(--glow-h)]"
+              style={
+                {
+                  background: `linear-gradient(150deg, ${g.accent}1f 0%, #101f2fe8 50%, #0d1d2c 100%)`,
+                  "--border-c": `${g.accent}30`,
+                  "--border-h": `${g.accent}90`,
+                  "--glow-h": `${g.accent}59`,
+                } as CSSProperties
+              }
             >
               {/* Diagonal shine sweep — same treatment as the Academic
                   Experience cards, gliding across on hover. */}
@@ -164,7 +169,10 @@ export default function SkillsSection() {
 
               {/* Corner accent glow on hover — matches the Academic
                   Experience cards */}
-              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
+              <div
+                className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500"
+                style={{ background: `${g.accent}26` }}
+              />
 
               {/* Top accent bar — the clearest visual cue that each card
                   belongs to a different category */}
@@ -188,15 +196,20 @@ export default function SkillsSection() {
               <p className="text-paperdim text-sm mt-2.5 sm:mt-3 mb-5 sm:mb-6 leading-relaxed">
                 {g.desc}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {g.items.map((item) => {
                   const tech = techIconMap[item];
                   return (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1.5 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-[12.5px] lg:text-[13px] px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
                     >
-                      {tech && <tech.icon size={12} color={tech.color} />}
+                      {tech && (
+                        <tech.icon
+                          className="w-[13px] h-[13px] sm:w-[15px] sm:h-[15px]"
+                          color={tech.color}
+                        />
+                      )}
                       {item}
                     </span>
                   );

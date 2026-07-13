@@ -13,6 +13,7 @@ import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
+import Footer from "@/components/Footer";
 
 import {
   FaFacebookF,
@@ -130,19 +131,7 @@ export default function Home() {
         <ContactSection />
       </main>
 
-      <footer
-        className="relative z-[2] text-center px-[5vw] py-9 font-mono text-xs text-paperdim/50 border-t border-line"
-        style={{
-          background:
-            "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        Designed &amp; Built by{" "}
-        <span className="text-paperdim">Md Tanvir Hossain</span> · 2026
-        <br />
-        Thanks for visiting my portfolio
-      </footer>
+      <Footer />
     </>
   );
 }

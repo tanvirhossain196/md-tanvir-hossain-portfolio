@@ -39,7 +39,7 @@ export default function HomeSection() {
       className="relative z-[2] min-h-screen flex items-center px-[5vw] pt-[110px] max-w-none w-full mx-auto overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #050b14 0%, #0a1f30 55%, #0e2c42 100%)",
+          "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
         backgroundAttachment: "fixed",
       }}
     >
@@ -79,7 +79,7 @@ export default function HomeSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-full border border-line flex items-center justify-center text-paperdim hover:border-[#64FFDA] hover:text-[#64FFDA] transition-colors"
+                  className="w-11 h-11 rounded-full border border-white/10 bg-[#0d3450]/25 flex items-center justify-center text-white hover:border-[#64FFDA] hover:text-[#64FFDA] hover:bg-[#64FFDA]/10 transition-colors"
                 >
                   <Icon size={17} />
                 </a>

@@ -389,7 +389,7 @@ export default function Nav() {
         />
       </div>
 
-      <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 bg-[#0a1420]/90 backdrop-blur-xl border-b border-[#64FFDA]/10 shadow-[0_4px_30px_rgba(0,0,0,0.35)]">
+      <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 bg-[#0a1420]/25 backdrop-blur-xl border-b border-[#64FFDA]/10 shadow-[0_4px_30px_rgba(0,0,0,0.35)]">
         {/* Logo - Left */}
         <a href="#home" className="group shrink-0 flex items-center">
           <Logo />
