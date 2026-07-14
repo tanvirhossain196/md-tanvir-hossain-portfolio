@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import IntroLoader from "@/components/IntroLoader";
 import Nav from "@/components/Nav";
 import OrbitSkills from "@/components/OrbitSkills";
 import ContactForm from "@/components/ContactForm";
@@ -99,7 +100,7 @@ const hobbies = [
 
 export default function Home() {
   return (
-    <>
+    <IntroLoader name="TANVIR.HOSSAIN" title="SOFTWARE ENGINEER · BANGLADESH">
       <Nav />
 
       <main>
@@ -132,6 +133,6 @@ export default function Home() {
       </main>
 
       <Footer />
-    </>
+    </IntroLoader>
   );
 }

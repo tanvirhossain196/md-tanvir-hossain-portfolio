@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaGithub, FaYoutube, FaTimes, FaPlay } from "react-icons/fa";
+import {
+  FaGithub,
+  FaYoutube,
+  FaTimes,
+  FaPlay,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 import SectionWatermark from "@/components/SectionWatermark";
 
 type Project = {
@@ -15,6 +21,7 @@ type Project = {
   videoId?: string; // YouTube video ID only, e.g. "dQw4w9WgXcQ"
   github?: string;
   youtube?: string;
+  live?: string; // Live/deployed project URL
   techTags: string[];
 };
 
@@ -31,6 +38,7 @@ const projects: Project[] = [
     videoId: "VIDEO_ID_HERE",
     github: "#",
     youtube: "#",
+    live: "#",
     techTags: ["C#", "MySQL"],
   },
   {
@@ -45,6 +53,7 @@ const projects: Project[] = [
     videoId: "UDEKJ0RBK_c",
     github: "#",
     youtube: "https://www.youtube.com/watch?v=UDEKJ0RBK_c",
+    live: "#",
     techTags: ["C++", "OpenGL", "Animation"],
   },
   {
@@ -59,6 +68,7 @@ const projects: Project[] = [
     videoId: "VIDEO_ID_HERE",
     github: "#",
     youtube: "#",
+    live: "#",
     techTags: ["ESP8266", "IoT", "Firebase"],
   },
   {
@@ -73,6 +83,7 @@ const projects: Project[] = [
     videoId: "VIDEO_ID_HERE",
     github: "#",
     youtube: "#",
+    live: "#",
     techTags: ["Embedded Systems", "RF Circuit"],
   },
   {
@@ -87,6 +98,7 @@ const projects: Project[] = [
     videoId: "VIDEO_ID_HERE",
     github: "#",
     youtube: "#",
+    live: "#",
     techTags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
   },
   {
@@ -101,6 +113,7 @@ const projects: Project[] = [
     videoId: "VIDEO_ID_HERE",
     github: "#",
     youtube: "#",
+    live: "#",
     techTags: ["HTML", "Tailwind CSS", "DaisyUI", "JavaScript"],
   },
 ];
@@ -257,25 +270,54 @@ export default function ProjectsSection() {
               <p className="text-paperdim text-[13px] sm:text-sm leading-relaxed mb-5 sm:mb-6">
                 {active.fullDesc}
               </p>
-              <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-6 sm:mb-8">
                 {active.techTags.map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-bgsoft border border-line text-paperdim"
+                    className="group inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] tracking-wide px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-[#64FFDA]/30 text-[#64FFDA] bg-[#64FFDA]/[0.06] transition-all duration-300 hover:border-[#64FFDA]/70 hover:bg-[#64FFDA]/15 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_-6px_rgba(100,255,218,0.5)]"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#64FFDA] shadow-[0_0_6px_1px_rgba(100,255,218,0.7)] group-hover:scale-125 transition-transform duration-300" />
                     {t}
                   </span>
                 ))}
               </div>
               <div className="flex flex-wrap gap-2.5 sm:gap-3">
+                {active.live && (
+                  <a
+                    href={active.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md border border-[#F5F1E8]/40 text-paper overflow-hidden transition-all duration-300 hover:border-[#64FFDA] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgba(100,255,218,0.45)]"
+                  >
+                    <span className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                      <span className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/25 to-transparent -translate-x-[150%] group-hover:translate-x-[420%] transition-transform duration-700 ease-out" />
+                    </span>
+                    <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-[#64FFDA] transition-colors duration-300">
+                      <FaExternalLinkAlt
+                        size={12}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                      Live View
+                    </span>
+                  </a>
+                )}
                 {active.github && (
                   <a
                     href={active.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md border border-[#64FFDA]/50 text-[#64FFDA] hover:bg-[#64FFDA]/10 hover:border-[#64FFDA] transition-colors"
+                    className="group relative inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md border border-[#F5F1E8]/40 text-paper overflow-hidden transition-all duration-300 hover:border-[#64FFDA] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgba(100,255,218,0.45)]"
                   >
-                    <FaGithub size={14} /> Github Repository
+                    <span className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                      <span className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/25 to-transparent -translate-x-[150%] group-hover:translate-x-[420%] transition-transform duration-700 ease-out" />
+                    </span>
+                    <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-[#64FFDA] transition-colors duration-300">
+                      <FaGithub
+                        size={14}
+                        className="transition-transform duration-300 group-hover:rotate-[360deg]"
+                      />
+                      Github Repository
+                    </span>
                   </a>
                 )}
                 {active.youtube && (
@@ -283,9 +325,16 @@ export default function ProjectsSection() {
                     href={active.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md bg-[#64FFDA] text-[#0A0A0C] font-semibold hover:brightness-110 transition-all"
+                    className="group relative inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-wide px-4 sm:px-5 py-2.5 sm:py-3 rounded-md border border-[#F5F1E8]/40 text-paper overflow-hidden transition-all duration-300 hover:border-[#FF0000] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgba(255,0,0,0.5)]"
                   >
-                    <FaYoutube size={14} /> Watch on YouTube
+                    <span className="pointer-events-none absolute inset-0 z-0 bg-[#FF0000] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 ease-out" />
+                    <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-white transition-colors duration-300 delay-75">
+                      <FaYoutube
+                        size={16}
+                        className="transition-transform duration-300 group-hover:scale-125"
+                      />
+                      Watch on YouTube
+                    </span>
                   </a>
                 )}
               </div>
