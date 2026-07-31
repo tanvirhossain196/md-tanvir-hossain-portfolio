@@ -9,8 +9,6 @@ type IntroLoaderProps = {
   name?: string;
   /** Small uppercase line under the name. */
   title?: string;
-  /** Total time (ms) from first paint to the page being fully visible. */
-  duration?: number;
 };
 
 // Kept identical in color, with extra intermediate stops so the fade
@@ -22,7 +20,6 @@ export default function IntroLoader({
   children,
   name = "TANVIR.HOSSAIN",
   title = "SOFTWARE ENGINEER · BANGLADESH",
-  duration = 1500,
 }: IntroLoaderProps) {
   const [percent, setPercent] = useState(0);
   const [exiting, setExiting] = useState(false);
@@ -33,37 +30,42 @@ export default function IntroLoader({
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    // The full duration is spent on the reveal (bracket + wipe + counter).
-    // Once it's done, the switch to the real page is instant — no fade,
-    // no transition, just a normal change.
-    const revealMs = prefersReduced ? 150 : duration;
+    // The name reveal (curtain wipe) starts after a 60ms delay and runs
+    // for 420ms — finishing at 480ms. The progress bar sits at 0% for
+    // that same 60ms, then fills in step with the wipe, so both start
+    // and finish together — and the page switches over at that instant.
+    const NAME_WIPE_DELAY_MS = 60;
+    const NAME_WIPE_DURATION_MS = 420;
+    const nameRevealMs = NAME_WIPE_DELAY_MS + NAME_WIPE_DURATION_MS;
+    const progressMs = prefersReduced ? 150 : nameRevealMs;
 
     const start = performance.now();
     let raf = 0;
 
     const tick = (now: number) => {
-      const elapsed = now - start;
-      const pct = Math.min(100, Math.round((elapsed / revealMs) * 100));
+      const elapsed = Math.max(0, now - start - NAME_WIPE_DELAY_MS);
+      const fillMs = progressMs - NAME_WIPE_DELAY_MS;
+      const pct = Math.min(100, Math.round((elapsed / fillMs) * 100));
       setPercent(pct);
-      if (elapsed < revealMs) raf = requestAnimationFrame(tick);
+      if (now - start < progressMs) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
 
     const switchTimer = setTimeout(() => {
       setExiting(true);
-    }, revealMs);
+    }, progressMs);
 
     // Overlay stays mounted for the fade's duration, then unmounts.
     const unmountTimer = setTimeout(() => {
       setMounted(false);
-    }, revealMs + 500);
+    }, progressMs + 500);
 
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(switchTimer);
       clearTimeout(unmountTimer);
     };
-  }, [duration]);
+  }, []);
 
   const [first, last] = name.split(".");
 
@@ -170,7 +172,7 @@ export default function IntroLoader({
               <div className="mt-6 flex flex-col items-center gap-2 w-56 sm:w-64">
                 <div className="relative h-px w-full bg-white/15 overflow-hidden">
                   <div
-                    className="absolute left-0 top-0 h-full bg-[#c9a659] transition-[width] duration-150 ease-out"
+                    className="absolute left-0 top-0 h-full bg-[#c9a659]"
                     style={{ width: `${percent}%` }}
                   />
                 </div>
