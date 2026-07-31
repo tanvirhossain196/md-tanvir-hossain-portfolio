@@ -2,26 +2,26 @@ import SectionWatermark from "@/components/SectionWatermark";
 
 const certificates = [
   {
-    icon: "🐍",
-    year: "2024",
-    title: "Python for Everybody",
-    desc: "Completed an in-depth specialization covering Python fundamentals, data structures, and data visualization.",
-    org: "Coursera · University of Michigan",
+    icon: "🌐",
+    year: "2025",
+    title: "Full Stack Web Development with JavaScript (MERN)",
+    desc: "Completed an in-depth specialization covering MongoDB, Express.js, React, and Node.js to build full-stack web applications.",
+    org: "Ostad",
   },
   {
     icon: "🌐",
     year: "2025",
     title: "The Web Developer Bootcamp",
     desc: "Mastered full-stack web development covering HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
-    org: "Udemy",
+    org: "Programming Hero",
   },
-  {
-    icon: "🤖",
-    year: "2026",
-    title: "Data Science and Machine Learning",
-    desc: "Learned to analyze data, build predictive models, and develop intelligent systems using ML algorithms.",
-    org: "Coursera",
-  },
+  // {
+  //   icon: "🤖",
+  //   year: "2026",
+  //   title: "Data Science and Machine Learning",
+  //   desc: "Learned to analyze data, build predictive models, and develop intelligent systems using ML algorithms.",
+  //   org: "Coursera",
+  // },
 ];
 
 export default function CertificatesSection() {
