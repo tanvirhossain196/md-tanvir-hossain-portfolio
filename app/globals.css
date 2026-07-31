@@ -4,10 +4,27 @@
 
 html {
   scroll-behavior: smooth;
+  /* Some section internals (e.g. absolutely-positioned orbit/particle
+     elements) can push slightly past 100% width on narrow screens. When
+     that happens the page gets a horizontal scrollbar, and the sliver of
+     body background revealed on the right edge shows through — which is
+     what created the mismatched black strip next to the navy sections on
+     mobile. Clipping horizontal overflow at the root removes that gap
+     entirely, on every page/section, not just the ones we've patched. */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
-  background: #0f1419;
+  overflow-x: hidden;
+  width: 100%;
+  /* Matches the navy used across the hero / nav gradients (#0f182b →
+     #0c4a6e) instead of an unrelated near-black, so if any sliver of body
+     background is ever exposed (e.g. during a resize/orientation change,
+     or on a section that hasn't been given its own background yet) it
+     blends with the rest of the page instead of reading as a stray black
+     bar. */
+  background: #0f182b;
   color: #f2efe9;
 }
 
@@ -85,5 +102,3 @@ body {
 .animate-kenburns {
   animation: kenburns 4.5s ease-out forwards;
 }
-
-

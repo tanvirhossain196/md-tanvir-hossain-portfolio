@@ -173,9 +173,9 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Github Repository"
-                        className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                        className="flex items-center justify-center px-3.5 py-2.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
                       >
-                        <FaGithub className="text-sm sm:text-lg" />
+                        <FaGithub className="text-2xl sm:text-lg" />
                       </a>
                     )}
                     {p.live && (
@@ -184,18 +184,18 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Live Link"
-                        className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                        className="flex items-center justify-center px-3.5 py-2.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
                       >
-                        <FaExternalLinkAlt className="text-xs sm:text-base" />
+                        <FaExternalLinkAlt className="text-xl sm:text-base" />
                       </a>
                     )}
                     <button
                       type="button"
                       aria-label="Expand"
                       onClick={() => setActive(p)}
-                      className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                      className="flex items-center justify-center px-3.5 py-2.5 sm:px-6 sm:py-3 text-paper hover:text-[#64FFDA] transition-colors duration-300"
                     >
-                      <FaExpand className="text-xs sm:text-base" />
+                      <FaExpand className="text-xl sm:text-base" />
                     </button>
                   </div>
                 </div>

@@ -12,6 +12,7 @@ import {
   Gamepad2,
   Mail,
   ArrowUpRight,
+  X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -116,6 +117,12 @@ function MenuToggleIcon({ open }: { open: boolean }) {
   );
 }
 
+// Shared navy used for both the full-screen backdrop tint and the dropdown
+// card itself, so the whole overlay reads as one continuous color — exactly
+// like the reference design, where the blurred backdrop and the menu card
+// are the same navy, just different opacities.
+const MENU_NAVY = "#0e2a42";
+
 function MobileMenu({
   open,
   onClose,
@@ -126,127 +133,144 @@ function MobileMenu({
   activeSection: string;
 }) {
   return (
-    <>
-      {/* Backdrop — click anywhere here (i.e. outside the panel) to close.
-          Sits at a lower z-index than <nav>, so clicks on the navbar /
-          hamburger itself are never swallowed by this layer. */}
+    // Root wrapper — fixed to the viewport (inset-0) AND overflow-hidden.
+    // This is the actual fix for the right-side black bar: the panel below
+    // is only *visually* hidden when closed via translate-x-full (moving
+    // it a full panel-width to the right), and on some mobile browsers a
+    // `position: fixed` descendant like that isn't reliably clipped by
+    // `overflow-x: hidden` on <html>/<body> — it still gets counted
+    // toward the page's scrollable width, which is exactly what was
+    // creating that extra ~338px of scrollable space (and the black
+    // sliver of body background revealed on the right). Making this
+    // wrapper itself `fixed` gives its `absolute`-positioned children a
+    // new containing block, and `overflow-hidden` on a wrapper that's
+    // already clamped to the viewport means nothing inside — no matter
+    // how far it's translated — can ever be reached by scrolling.
+    <div
+      className="fixed inset-0 z-[90] lg:hidden"
+      style={{
+        overflow: "hidden",
+        pointerEvents: open ? "auto" : "none",
+      }}
+    >
+      {/* Backdrop — a soft navy tint + blur laid over the entire page, so
+          whatever is behind the menu (hero art, project cards, etc.) is
+          still visible but softened, never a flat opaque block. Click
+          anywhere on it (i.e. outside the card) to close. */}
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-[90] bg-[#0e2a42]/60 backdrop-blur-sm transition-opacity duration-200 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
-          open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+        className={`absolute inset-0 backdrop-blur-xl transition-opacity duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+          open ? "opacity-100" : "opacity-0"
         }`}
+        style={{ backgroundColor: `${MENU_NAVY}99` /* ~60% opacity */ }}
       />
 
-      {/* Panel — a full-height sidebar that slides in from the right edge
-          of the screen. It runs the full viewport height (sitting behind
-          the navbar in stacking order) and shares the exact same solid
-          color as the navbar, so the two read as one continuous surface
-          with no seam or divider where they meet. */}
+      {/* Panel — back to the original full-height sidebar size, sliding in
+          from the right edge and running the full viewport height (not the
+          small top-right card from before). Same solid navy as the backdrop
+          tint, so panel + backdrop read as one continuous color. Now
+          `absolute` instead of `fixed`, positioned relative to the clipped
+          wrapper above instead of the viewport directly. */}
       <div
         role="dialog"
         aria-modal="true"
         aria-hidden={!open ? "true" : "false"}
-        className={`fixed inset-y-0 right-0 z-[95] w-[82vw] max-w-[360px] transform-gpu transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] will-change-transform lg:hidden ${
-          open
-            ? "pointer-events-auto translate-x-0"
-            : "pointer-events-none translate-x-full"
+        className={`absolute inset-y-0 right-0 w-[82vw] max-w-[360px] transform-gpu transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] will-change-transform ${
+          open ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          backgroundColor: MENU_NAVY,
+          boxShadow: "-25px 0 70px -15px rgba(0,0,0,0.75)",
+        }}
       >
-        <div className="relative flex h-full flex-col overflow-hidden shadow-[-25px_0_70px_-15px_rgba(0,0,0,0.75)] bg-[#0e2a42]">
-          {/* Single-column nav list — scrolls internally if it overflows
-              the sidebar's height. Top padding clears the fixed navbar
-              that sits above this panel in stacking order. */}
-          <ul className="relative m-0 flex min-h-0 flex-1 flex-col overflow-y-auto px-2 pt-[88px] pb-2 list-none">
-            {navLinks.map((link, index) => {
-              const id = link.href.replace("#", "");
-              const isActive = activeSection === id && id !== "home";
-              const Icon = link.icon;
-              const isLast = index === navLinks.length - 1;
-
-              return (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={onClose}
-                    className={`group relative flex items-center gap-3 pl-5 pr-3.5 py-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-                      !isLast ? "border-b border-line/15" : ""
-                    } ${
-                      open
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-2 opacity-0"
-                    }`}
-                    style={{
-                      transitionDelay: open ? `${40 + index * 30}ms` : "0ms",
-                    }}
-                  >
-                    {/* Active / hover accent bar on the far left edge */}
-                    <span
-                      className={`absolute left-0 top-1/2 w-[3px] -translate-y-1/2 rounded-r-full bg-[#64FFDA] transition-all duration-300 ${
-                        isActive
-                          ? "h-6 opacity-100"
-                          : "h-3 opacity-0 group-hover:opacity-60"
-                      }`}
-                    />
-
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition-colors duration-300 ${
-                        isActive
-                          ? "border-[#64FFDA]/50 bg-[#64FFDA]/15 text-[#64FFDA]"
-                          : "border-line/60 text-paperdim group-hover:border-[#64FFDA]/40 group-hover:text-[#64FFDA]"
-                      }`}
-                    >
-                      <Icon size={15} strokeWidth={1.9} />
-                    </span>
-
-                    <span
-                      className={`flex-1 font-sans text-[12.5px] font-medium uppercase tracking-[1.5px] transition-colors duration-300 ${
-                        isActive
-                          ? "text-paper"
-                          : "text-paper/90 group-hover:text-paper"
-                      }`}
-                    >
-                      {link.label}
-                    </span>
-
-                    <ArrowUpRight
-                      size={14}
-                      className={`shrink-0 transition-all duration-300 ${
-                        isActive
-                          ? "translate-x-0 text-[#64FFDA] opacity-100"
-                          : "-translate-x-1 text-paperdim opacity-0 group-hover:translate-x-0 group-hover:opacity-50"
-                      }`}
-                    />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div
-            className={`relative border-t border-line/30 p-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-              open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
-            }`}
-            style={{
-              transitionDelay: open ? `${40 + navLinks.length * 30}ms` : "0ms",
-            }}
+        {/* Close (X) button */}
+        <div className="flex justify-end px-6 pt-6">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close menu"
+            className="flex h-8 w-8 items-center justify-center text-paper transition-colors duration-300 hover:text-[#64FFDA]"
           >
+            <X size={22} strokeWidth={2} />
+          </button>
+        </div>
+
+        {/* Simple icon + label rows — no borders, boxes, or accent bars,
+            just generous vertical spacing, matching the reference. Scrolls
+            internally if it overflows the sidebar's height. */}
+        <ul className="m-0 flex max-h-[calc(100%-72px)] list-none flex-col gap-1 overflow-y-auto px-7 pb-9 pt-3">
+          {navLinks.map((link, index) => {
+            const id = link.href.replace("#", "");
+            const isActive = activeSection === id && id !== "home";
+            const Icon = link.icon;
+
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={onClose}
+                  className={`group flex items-center gap-4 py-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                    open
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-2 opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: open ? `${60 + index * 40}ms` : "0ms",
+                  }}
+                >
+                  <Icon
+                    size={19}
+                    strokeWidth={1.8}
+                    className={`shrink-0 transition-colors duration-300 ${
+                      isActive
+                        ? "text-[#64FFDA]"
+                        : "text-paper group-hover:text-[#64FFDA]"
+                    }`}
+                  />
+                  <span
+                    className={`font-sans text-[15px] font-medium transition-colors duration-300 ${
+                      isActive
+                        ? "text-[#64FFDA]"
+                        : "text-paper group-hover:text-[#64FFDA]"
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+
+          {/* Resume link kept as a final row in the same simple style,
+              instead of a separate boxed button — nothing in the reference
+              breaks the plain icon+label pattern. */}
+          <li>
             <a
               href={RESUME_PDF_PATH}
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
-              className="flex items-center justify-center gap-2 rounded-xl border border-[#64FFDA]/80 bg-transparent px-5 py-3 font-sans text-[13px] font-semibold tracking-[1px] text-[#64FFDA] transition-colors duration-300 hover:bg-[#64FFDA] hover:text-[#0A0A0C]"
+              className={`group flex items-center gap-4 py-3 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+              }`}
+              style={{
+                transitionDelay: open
+                  ? `${60 + navLinks.length * 40}ms`
+                  : "0ms",
+              }}
             >
-              <DownloadIcon />
-              Download Resume
+              <span className="shrink-0 text-paper transition-colors duration-300 group-hover:text-[#64FFDA]">
+                <DownloadIcon />
+              </span>
+              <span className="font-sans text-[15px] font-medium text-paper transition-colors duration-300 group-hover:text-[#64FFDA]">
+                Resume
+              </span>
             </a>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -380,13 +404,13 @@ export default function Nav() {
       </div>
 
       <nav
-        className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 transition-colors duration-300"
+        className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 backdrop-blur-xl transition-colors duration-300"
         style={
           menuOpen
-            ? { background: "#0e2a42" }
+            ? { backgroundColor: "#0e2a4299" /* matches menu backdrop tint */ }
             : {
                 background:
-                  "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
+                  "linear-gradient(135deg, #0f182bcc 0%, #0d3450cc 55%, #0c4a6ecc 100%)",
                 backgroundAttachment: "fixed",
                 backgroundSize: "100vw 100vh",
                 backgroundPosition: "top left",
