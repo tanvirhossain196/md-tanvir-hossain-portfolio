@@ -23,13 +23,14 @@ const projects: Project[] = [
     id: "event-flow",
     tag: "REACT.JS · NODE.JS · EXPRESS.JS · SUPABASE",
     category: "WEB APPLICATION",
-    title: "Event Flow – An Automated Event Recommendation System",
+    title: "Event Flow",
     desc: "Full-stack university event management and recommendation system with secure authentication, QR-based attendance, and media management.",
     fullDesc:
       "Developed a full-stack university event management and recommendation system with secure authentication, QR-based attendance, and Cloudinary integration for media management.",
     image: "/images/projects/event-flow.jpg",
-    github: "#",
-    live: "#",
+    github:
+      "https://github.com/tanvirhossain196/University-Event-Management-Platform-EventFlow",
+    live: "https://eventflow-ewu.vercel.app/",
     techTags: [
       "React.js",
       "Node.js",
@@ -44,26 +45,26 @@ const projects: Project[] = [
     id: "surepay",
     tag: "NODE.JS · EXPRESS.JS · POSTGRESQL · NGINX",
     category: "MOBILE BANKING SYSTEM",
-    title: "SurePay - Mobile Banking System",
+    title: "SurePay",
     desc: "Secure mobile banking backend with SSL encryption and an NGINX reverse proxy for load balancing and performance.",
     fullDesc:
       "Built a secure mobile banking backend with Node.js, Express.js, and PostgreSQL, implementing SSL encryption and NGINX reverse proxy for load balancing and performance.",
     image: "/images/projects/surepay.jpg",
-    github: "#",
-    live: "#",
+    github: "https://github.com/tanvirhossain196/SurePay",
+    live: "https://surepay.vercel.app/",
     techTags: ["Node.js", "Express.js", "PostgreSQL", "NGINX"],
   },
   {
     id: "learnroom",
     tag: "HTML5 · CSS · JAVASCRIPT · NODE.JS · MONGODB",
     category: "WEB APPLICATION",
-    title: "Learnroom - Online Classroom",
+    title: "Learnroom",
     desc: "Role-based online classroom platform with secure authentication and RESTful APIs for managing users, courses, and assignments.",
     fullDesc:
       "Developed a role-based online classroom platform with secure authentication and RESTful APIs for managing users, courses, and assignments.",
     image: "/images/projects/learnroom.jpg",
-    github: "#",
-    live: "#",
+    github: "https://github.com/tanvirhossain196/Google-Classroom",
+    live: "https://classroom479.vercel.app/",
     techTags: [
       "HTML5",
       "CSS",
@@ -77,7 +78,7 @@ const projects: Project[] = [
     id: "mess-management",
     tag: "JAVA · ANDROID STUDIO · FIREBASE",
     category: "MOBILE APPLICATION",
-    title: "Mess Management System (Android App)",
+    title: "Mess Manage",
     desc: "Mobile app for managing mess members, daily meals, and monthly expense calculations with real-time data storage.",
     fullDesc:
       "Designed and developed a mobile application for managing mess members, daily meals, and monthly expense calculations. Implemented real-time data storage and authentication using Firebase to ensure secure and efficient data handling.",
@@ -161,57 +162,49 @@ export default function ProjectsSection() {
           {projects.map((p) => (
             <div
               key={p.id}
-              className="text-left rounded-xl border border-[#F5F1E8]/20 overflow-hidden group relative transition-all duration-300 hover:border-[#64FFDA]/60 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)]"
+              className="text-left rounded-lg border border-[#F5F1E8]/20 overflow-hidden group relative"
             >
-              {/* Diagonal shine sweep — kept for the site's signature hover
-                  motion. Pointer-events disabled so it never blocks clicks. */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-              </div>
-
               <div className="h-56 sm:h-64 lg:h-72 relative overflow-hidden bg-[#0d1f36]">
                 <img
                   src={p.image}
                   alt={p.title}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-[filter] duration-500 ease-out group-hover:blur-[8px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-300" />
 
-                {/* Centered hover toolbar — Github / Live / Expand. Only
-                    these icons are clickable; clicking anywhere else on
-                    the card does nothing. Hover only re-colors the icon
-                    itself (no background fill). */}
-                <div className="absolute inset-0 z-30 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Github Repository"
-                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#0d1f36]/90 border border-[#64FFDA]/30 flex items-center justify-center text-paper scale-90 group-hover:scale-100 transition-all duration-300 hover:text-[#64FFDA]"
+                <div className="absolute inset-0 z-30 flex items-start sm:items-center justify-end sm:justify-center p-2.5 sm:p-0 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300">
+                  <div className="flex items-center rounded-md sm:rounded-lg bg-[#0d1f36]/90 border border-[#64FFDA]/30 overflow-hidden scale-100 sm:scale-90 sm:group-hover:scale-100 transition-transform duration-300">
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Github Repository"
+                        className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                      >
+                        <FaGithub className="text-sm sm:text-lg" />
+                      </a>
+                    )}
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Live Link"
+                        className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 border-r border-white/20 text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                      >
+                        <FaExternalLinkAlt className="text-xs sm:text-base" />
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      aria-label="Expand"
+                      onClick={() => setActive(p)}
+                      className="flex items-center justify-center px-2.5 py-1.5 sm:px-6 sm:py-3 text-paper hover:text-[#64FFDA] transition-colors duration-300"
                     >
-                      <FaGithub size={16} />
-                    </a>
-                  )}
-                  {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Live Link"
-                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#0d1f36]/90 border border-[#64FFDA]/30 flex items-center justify-center text-paper scale-90 group-hover:scale-100 transition-all duration-300 hover:text-[#64FFDA]"
-                    >
-                      <FaExternalLinkAlt size={14} />
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    aria-label="Expand"
-                    onClick={() => setActive(p)}
-                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#0d1f36]/90 border border-[#64FFDA]/30 flex items-center justify-center text-paper scale-90 group-hover:scale-100 transition-all duration-300 hover:text-[#64FFDA]"
-                  >
-                    <FaExpand size={14} />
-                  </button>
+                      <FaExpand className="text-xs sm:text-base" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -229,7 +222,7 @@ export default function ProjectsSection() {
                   type="button"
                   aria-label="Expand"
                   onClick={() => setActive(p)}
-                  className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-[#64FFDA]/30 flex items-center justify-center text-[#64FFDA] hover:text-paper hover:border-[#64FFDA]/70 transition-colors duration-300"
+                  className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-white/20 flex items-center justify-center text-paper hover:text-[#64FFDA] hover:border-[#64FFDA]/70 transition-colors duration-300"
                 >
                   <FaExpand size={12} />
                 </button>
@@ -263,7 +256,7 @@ export default function ProjectsSection() {
               }`}
               style={{
                 background:
-                  "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",
+                  "linear-gradient(to top right, #0c4a6e 0%, #0e314c 50%, #163457 100%)",
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -276,25 +269,24 @@ export default function ProjectsSection() {
               </button>
 
               <div className="px-6 sm:px-10 lg:px-12 pt-20 sm:pt-24 pb-14 sm:pb-16">
-                {/* Browser-frame mockup around the screenshot — centered,
-                    smaller than before */}
-                <div className="w-full sm:w-[55%] mx-auto rounded-lg overflow-hidden border border-line shadow-2xl mb-8 sm:mb-10 bg-[#F5F1E8]">
-                  <div className="h-6 sm:h-7 bg-[#E5E1D8] flex items-center gap-1.5 px-3">
-                    <span className="w-2 h-2 rounded-full bg-[#FF5F57]" />
-                    <span className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
-                    <span className="w-2 h-2 rounded-full bg-[#28C840]" />
+                {/* Fixed-height frame, transparent background — image
+                    always fits fully inside (no crop, no overflow/scroll)
+                    whether it's wide+short or narrow+tall; object-contain
+                    keeps its own aspect ratio and centers it. */}
+                <div className="w-full sm:w-[55%] mx-auto mb-8 sm:mb-10">
+                  <div className="h-64 sm:h-72 md:h-80 flex items-center justify-center bg-transparent">
+                    <img
+                      src={active.image}
+                      alt={active.title}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <img
-                    src={active.image}
-                    alt={active.title}
-                    className="w-full h-auto object-cover"
-                  />
                 </div>
 
                 <h3 className="font-display text-xl sm:text-2xl md:text-3xl text-paper mb-2 sm:mb-3 whitespace-nowrap overflow-hidden text-ellipsis">
                   {active.title}
                 </h3>
-                <span className="inline-block font-sans text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-paper bg-[#15304a] mb-5 sm:mb-6">
+                <span className="inline-block font-sans text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-paper bg-[#0a192f] mb-5 sm:mb-6">
                   {active.category}
                 </span>
 
@@ -302,23 +294,23 @@ export default function ProjectsSection() {
                   {active.techTags.map((t) => (
                     <span
                       key={t}
-                      className="shrink-0 font-sans text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-paper bg-[#15304a]"
+                      className="shrink-0 font-sans text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-paper bg-[#0a192f]"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-6 sm:gap-8 mt-6 sm:mt-10">
+                <div className="flex flex-wrap items-center gap-6 sm:gap-8 mt-10 sm:mt-16">
                   {active.github && (
                     <a
                       href={active.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wide text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                      className="group inline-flex items-center gap-2 font-mono text-sm sm:text-base uppercase tracking-wide text-paper hover:text-[#64FFDA] transition-colors duration-300"
                     >
                       <FaGithub
-                        size={16}
+                        size={18}
                         className="transition-transform duration-300 group-hover:rotate-[360deg]"
                       />
                       Github
@@ -329,10 +321,10 @@ export default function ProjectsSection() {
                       href={active.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wide text-paper hover:text-[#64FFDA] transition-colors duration-300"
+                      className="group inline-flex items-center gap-2 font-mono text-sm sm:text-base uppercase tracking-wide text-paper hover:text-[#64FFDA] transition-colors duration-300"
                     >
                       <FaExternalLinkAlt
-                        size={14}
+                        size={16}
                         className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       />
                       Live Link
