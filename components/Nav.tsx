@@ -27,7 +27,7 @@ const navLinks: { href: string; label: string; icon: LucideIcon }[] = [
   { href: "#contact", label: "Contact", icon: Mail },
 ];
 
-const RESUME_PDF_PATH = "/cv-pdf/MD_TANVIR_HOSSAIN_CV.pdf";
+const RESUME_PDF_PATH = "/cv-pdf/MD_TANVIR_HOSSAIN_Resume.pdf";
 
 function DownloadIcon() {
   return (

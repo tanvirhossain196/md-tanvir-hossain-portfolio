@@ -335,7 +335,7 @@ export default function AboutTabs() {
       </div>
 
       <a
-        href="/cv-pdf/MD_TANVIR_HOSSAIN_CV.pdf"
+        href="/cv-pdf/MD_TANVIR_HOSSAIN_Resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="at-heading group relative mt-5 inline-flex items-center gap-2 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent text-[#ede8dc] text-sm uppercase tracking-wide px-5 py-2.5 transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
