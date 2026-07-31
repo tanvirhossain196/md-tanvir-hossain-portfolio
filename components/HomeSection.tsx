@@ -122,7 +122,7 @@ export default function HomeSection() {
             from the 4:5 aspect ratio. */}
         <div className="order-3 flex justify-center">
           <div
-            className="w-full aspect-[4/5] max-w-[440px] rounded-2xl bg-panelsolid border border-line overflow-hidden
+            className="w-full aspect-[4/5] max-w-[440px] rounded-lg bg-panelsolid border border-line overflow-hidden
               lg:w-auto lg:max-w-none lg:aspect-[4/5] lg:h-[clamp(380px,34vw,500px)]"
           >
             <PhotoSlideshow />
