@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-const roles = ["Software Engineer", "Full-Stack Developer (Frontend Focused)", "Problem Solver"];
+const roles = ["Software Engineer", "Full-Stack Developer (Frontend Focused)", "ReactJS Enthusiast","NextJS Expert"];
 
-const TYPE_SPEED = 90;
-const DELETE_SPEED = 45;
-const HOLD_TIME = 1400;
+const TYPE_SPEED = 40;
+const DELETE_SPEED = 30;
+const HOLD_TIME = 600;
 const PAUSE_BEFORE_TYPE = 400;
 
 export default function Typewriter() {

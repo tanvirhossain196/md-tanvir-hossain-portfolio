@@ -146,7 +146,7 @@ const CARD_GRADIENT =
 function Card({ children }: { children: ReactNode }) {
   return (
     <div
-      className="relative p-4 flex gap-4 rounded-xl border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)]"
+      className="relative p-4 flex gap-4 rounded-md border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)]"
       style={{
         background: CARD_GRADIENT,
       }}
@@ -176,7 +176,7 @@ function DocumentModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl max-h-[85vh] bg-panelsolid border border-line rounded-2xl overflow-hidden flex flex-col"
+        className="w-full max-w-2xl max-h-[85vh] bg-panelsolid border border-line rounded-lg overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

@@ -1,15 +1,41 @@
 import SectionWatermark from "@/components/SectionWatermark";
 import AboutTabs from "@/components/AboutTabs";
-import { Quote, GraduationCap, Code2, FolderGit2, Layers } from "lucide-react";
+import { Quote, Code2, FolderGit2, Layers } from "lucide-react";
+
+// lucide-react's brand icon set (Github) isn't present in every version,
+// so we use a small inline SVG instead to avoid build-time export errors.
+function GithubIcon({
+  size = 18,
+  strokeWidth = 1.75,
+  className,
+}: {
+  size?: number;
+  strokeWidth?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+    </svg>
+  );
+}
 
 const stats = [
-  { icon: GraduationCap, value: "3.73", label: "CGPA" },
+  { icon: GithubIcon, value: "40+", label: "Github Contribution" },
   { icon: Code2, value: "4+", label: "Years Coding" },
   { icon: FolderGit2, value: "10+", label: "Projects Built" },
   { icon: Layers, value: "15+", label: "Technologies" },
 ];
-
-const focusAreas = ["AI", "Web Dev", "UI/UX", "Systems"];
 
 export default function AboutSection() {
   return (
@@ -34,7 +60,7 @@ export default function AboutSection() {
           {/* Identity panel — replaces the profile photo. Same footprint
               as the old image slot so the grid proportions next to the
               text column don't shift. */}
-          <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-2xl border border-[#ede8dc]/25 overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:gap-0 lg:justify-between lg:p-10 lg:aspect-[4/5]">
+          <div className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px] rounded-lg border border-[#ede8dc]/25 overflow-hidden mx-auto lg:mx-0 relative flex flex-col gap-6 sm:gap-7 p-6 sm:p-8 lg:p-10">
             <div
               className="absolute inset-0 -z-10"
               style={{ backgroundColor: "rgba(6,14,26,0.12)" }}
@@ -43,18 +69,17 @@ export default function AboutSection() {
             {/* Quote */}
             <div className="relative z-10">
               <Quote size={28} className="text-[#64FFDA]/50 mb-4" />
-              <p className="font-serif italic font-light text-paper text-[clamp(18px,2vw,24px)] leading-snug">
-                Turning curiosity into code, and code into something that
-                matters.
+              <p className="font-serif italic font-light text-paper text-[clamp(14px,1.6vw,20px)] leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                Curiosity coded into something that matters.
               </p>
             </div>
 
             {/* Stats grid */}
-            <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4 lg:my-8">
+            <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl border border-[#ede8dc]/15 bg-black/5 p-3.5 sm:p-4 flex flex-col gap-2"
+                  className="rounded-md border border-[#ede8dc]/15 bg-black/5 p-3.5 sm:p-4 flex flex-col gap-2"
                 >
                   <s.icon
                     size={18}
@@ -64,22 +89,10 @@ export default function AboutSection() {
                   <div className="font-display text-xl sm:text-2xl text-paper leading-none">
                     {s.value}
                   </div>
-                  <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wide text-paperdim">
+                  <div className="font-mono text-[11px] sm:text-[12px] uppercase tracking-wide text-paperdim leading-snug">
                     {s.label}
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Focus areas */}
-            <div className="relative z-10 flex flex-wrap gap-2">
-              {focusAreas.map((f) => (
-                <span
-                  key={f}
-                  className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wide px-2.5 sm:px-3 py-1.5 rounded-full border border-[#64FFDA]/30 text-[#64FFDA] bg-[#64FFDA]/5"
-                >
-                  {f}
-                </span>
               ))}
             </div>
           </div>

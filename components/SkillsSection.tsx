@@ -24,7 +24,6 @@ import {
   SiPhp,
   SiFigma,
   SiGit,
-  SiDocker,
   SiPostman,
   SiNginx,
   SiJsonwebtokens,
@@ -58,7 +57,6 @@ const techIconMap: Record<string, { icon: AnyIcon; color: string }> = {
   Figma: { icon: SiFigma, color: "#F24E1E" },
   Git: { icon: SiGit, color: "#F05032" },
   GitHub: { icon: FaGithub, color: "#FFFFFF" },
-  Docker: { icon: SiDocker, color: "#2496ED" },
   Postman: { icon: SiPostman, color: "#FF6C37" },
   "VS Code": { icon: VscVscode, color: "#007ACC" },
   "JWT Auth": { icon: SiJsonwebtokens, color: "#FFFFFF" },
@@ -108,7 +106,7 @@ const skillGroups = [
     icon: "🛠️",
     title: "Tools",
     desc: "Industry-standard tools for design, version control and productivity.",
-    items: ["Figma", "Git", "GitHub", "Docker", "Postman", "VS Code"],
+    items: ["Figma", "Git", "GitHub", "Postman", "VS Code"],
     accent: "#f59e0b", // amber
   },
   {
@@ -151,7 +149,7 @@ export default function SkillsSection() {
           {skillGroups.map((g) => (
             <div
               key={g.title}
-              className="group relative rounded-2xl border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#64FFDA]/60 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="group relative rounded-lg border border-[#ede8dc]/25 overflow-hidden shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] p-6 sm:p-7 lg:p-8 transition-colors duration-500 hover:border-[#64FFDA]/60"
               style={
                 {
                   background:
@@ -159,22 +157,14 @@ export default function SkillsSection() {
                 } as CSSProperties
               }
             >
-              {/* Diagonal shine sweep — same treatment as the Academic
-                  Experience cards, gliding across on hover. */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
+              <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center text-sm sm:text-base border transition-colors duration-300 bg-[#64FFDA]/10 border-[#64FFDA]/30 group-hover:border-[#64FFDA]/60 shrink-0">
+                  {g.icon}
+                </div>
+                <h3 className="font-display text-lg sm:text-xl text-paper transition-colors duration-300 group-hover:text-[#64FFDA]">
+                  {g.title}
+                </h3>
               </div>
-
-              {/* Corner accent glow on hover — matches the Academic
-                  Experience cards */}
-              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500 bg-[#64FFDA]/15" />
-
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 border transition-all duration-300 group-hover:scale-110 bg-[#64FFDA]/10 border-[#64FFDA]/30">
-                {g.icon}
-              </div>
-              <h3 className="font-display text-lg sm:text-xl text-paper">
-                {g.title}
-              </h3>
               <p className="text-paperdim text-sm mt-2.5 sm:mt-3 mb-5 sm:mb-6 leading-relaxed">
                 {g.desc}
               </p>
@@ -184,7 +174,7 @@ export default function SkillsSection() {
                   return (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-[12px] lg:text-[13px] px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-full bg-bgsoft border border-line text-paperdim transition-colors hover:border-[#64FFDA]/50 hover:text-[#64FFDA] hover:bg-[#64FFDA]/5"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-[12px] lg:text-[13px] px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-md bg-[#0a1a2e] border border-[#64FFDA]/10 text-paper transition-colors duration-300 hover:border-[#64FFDA]/50"
                     >
                       {tech && (
                         <tech.icon

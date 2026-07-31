@@ -1,15 +1,22 @@
 import SectionWatermark from "@/components/SectionWatermark";
+import { Layers, Globe, type LucideIcon } from "lucide-react";
 
-const certificates = [
+const certificates: {
+  icon: LucideIcon;
+  year: string;
+  title: string;
+  desc: string;
+  org: string;
+}[] = [
   {
-    icon: "🌐",
+    icon: Layers,
     year: "2025",
     title: "Full Stack Web Development with JavaScript (MERN)",
     desc: "Completed an in-depth specialization covering MongoDB, Express.js, React, and Node.js to build full-stack web applications.",
     org: "Ostad",
   },
   {
-    icon: "🌐",
+    icon: Globe,
     year: "2025",
     title: "The Web Developer Bootcamp",
     desc: "Mastered full-stack web development covering HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
@@ -60,31 +67,25 @@ export default function CertificatesSection() {
           {certificates.map((c) => (
             <div
               key={c.title}
-              className="group relative rounded-xl border border-[#F5F1E8]/25 backdrop-blur-sm p-6 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/60 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="group relative rounded-lg border border-[#F5F1E8]/25 backdrop-blur-sm p-6 overflow-hidden"
               style={{
                 background:
                   "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",
               }}
             >
-              {/* Diagonal shine sweep — same treatment as the Academic
-                  Experience cards, gliding across on hover. */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-              </div>
-
-              {/* Corner accent glow on hover — matches the Academic
-                  Experience cards */}
-              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
-
               <div className="relative z-10 flex items-start justify-between mb-5">
-                <div className="w-11 h-11 rounded-lg bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center text-lg transition-all duration-300 group-hover:scale-110 group-hover:border-[#64FFDA]/60">
-                  {c.icon}
+                <div className="w-11 h-11 rounded-lg bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center">
+                  <c.icon
+                    size={20}
+                    strokeWidth={2}
+                    className="text-paper transition-colors duration-300 group-hover:text-[#64FFDA]"
+                  />
                 </div>
-                <span className="font-mono text-[10px] px-2.5 py-1 rounded-full border border-[#64FFDA]/40 text-[#64FFDA]">
+                <span className="font-mono text-[10px] px-2.5 py-1 rounded-md bg-[#0a1a2e] border border-[#64FFDA]/10 text-[#64FFDA]">
                   {c.year}
                 </span>
               </div>
-              <h3 className="relative z-10 font-display text-lg text-paper">
+              <h3 className="relative z-10 font-display text-lg text-paper transition-colors duration-300 group-hover:text-[#64FFDA]">
                 {c.title}
               </h3>
               <p className="relative z-10 text-paperdim text-sm mt-2 mb-5 leading-relaxed">
@@ -95,12 +96,10 @@ export default function CertificatesSection() {
               </div>
               <a
                 href="#"
-                className="relative z-10 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-[#64FFDA] transition-colors duration-300 group-hover:text-white"
+                className="relative z-10 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-paper transition-colors duration-300 group-hover:text-[#64FFDA]"
               >
                 View Certificate
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+                <span className="inline-block">→</span>
               </a>
             </div>
           ))}

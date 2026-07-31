@@ -78,27 +78,18 @@ export default function AcademicSection() {
           {academicMoments.map((m) => (
             <div
               key={m.title}
-              className="group relative rounded-2xl border border-[#ede8dc]/25 overflow-hidden transition-all duration-500 hover:border-[#64FFDA]/50 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="group relative rounded-lg border border-[#ede8dc]/25 overflow-hidden transition-colors duration-500 hover:border-[#64FFDA]/50"
               style={{
                 background:
                   "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)",
               }}
             >
-              {/* Diagonal shine sweep — a soft light beam glides across the
-                  whole card on hover. Sits above everything (z-20) but is
-                  pointer-events-none so it never blocks clicks. Uncommon
-                  enough to feel deliberate, restrained enough to still
-                  read as professional rather than gimmicky. */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-              </div>
-
               {/* Image */}
               <div className="h-44 relative overflow-hidden">
                 <img
                   src={m.image}
                   alt={m.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
                 {/* Gradient overlay for depth */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1626] via-[#0a1626]/10 to-transparent opacity-80" />
@@ -123,16 +114,13 @@ export default function AcademicSection() {
                 {(() => {
                   const TagIcon = tagIconMap[m.tag];
                   return (
-                    <span className="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] font-semibold tracking-[1.5px] uppercase px-4 py-2 rounded-full bg-gradient-to-r from-[#64FFDA]/10 via-[#64FFDA]/5 to-transparent border border-[#64FFDA]/30 text-[#64FFDA]/90 transition-all duration-300 group-hover:border-[#64FFDA]/60 group-hover:from-[#64FFDA]/20 group-hover:to-[#64FFDA]/5 group-hover:text-[#64FFDA]">
+                    <span className="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] font-semibold tracking-[1.5px] uppercase px-4 py-2 rounded-md text-paper bg-[#0a1520]/80 shadow-sm transition-colors duration-300 group-hover:bg-[#0a1520]">
                       {TagIcon && <TagIcon size={12} strokeWidth={2.25} />}
                       {m.tag}
                     </span>
                   );
                 })()}
               </div>
-
-              {/* Corner accent glow on hover */}
-              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
             </div>
           ))}
         </div>

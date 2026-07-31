@@ -84,59 +84,47 @@ export default function HobbiesOrbit() {
           {hobbies.map((h) => (
             <div
               key={h.title}
-              className="hobby-card group relative rounded-2xl border border-[#ede8dc]/25 backdrop-blur-sm px-5 sm:px-6 md:px-7 lg:px-8 py-6 sm:py-7 flex flex-col items-center text-center gap-5 sm:gap-6 transition-all duration-500 hover:border-[#64FFDA]/60 hover:-translate-y-2 hover:shadow-[0_25px_55px_-18px_rgba(100,255,218,0.35)]"
+              className="hobby-card group relative rounded-lg border border-[#ede8dc]/25 backdrop-blur-sm px-5 sm:px-6 md:px-7 lg:px-8 py-6 sm:py-7 flex flex-col items-start text-left gap-5 sm:gap-6 transition-colors duration-500 hover:border-[#64FFDA]/60"
               style={{
                 background:
                   "linear-gradient(145deg, rgba(20,42,68,0.5) 0%, rgba(14,30,52,0.5) 45%, rgba(10,22,38,0.5) 100%)",
               }}
             >
-              {/* Diagonal shine sweep — same treatment as the Academic
-                  Experience cards, gliding across on hover. */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-2xl">
-                <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-              </div>
-
-              {/* Corner accent glow on hover — matches the Academic
-                  Experience cards */}
-              <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#64FFDA]/0 group-hover:bg-[#64FFDA]/10 blur-3xl transition-all duration-500" />
-
-              {/* hub — static, no orbit / no spin */}
-              <div className="relative z-10 w-[52px] h-[52px] sm:w-[58px] sm:h-[58px] rounded-full bg-[#16283f] border border-[#64FFDA]/40 flex flex-col items-center justify-center gap-0.5 shadow-[0_0_22px_rgba(100,255,218,0.25)] transition-transform duration-300 group-hover:scale-105">
-                <span className="text-lg sm:text-xl leading-none">
-                  {h.icon}
-                </span>
+              {/* icon + title — same row, icon in the top-left corner */}
+              <div className="relative z-10 flex items-center gap-3 w-full">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#16283f] border border-[#64FFDA]/30 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:border-[#64FFDA]/60">
+                  <span className="text-base sm:text-lg leading-none">
+                    {h.icon}
+                  </span>
+                </div>
+                <h3 className="font-serif italic font-normal text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-[#64FFDA]">
+                  {h.title}
+                </h3>
               </div>
 
               {/* text block */}
               <div className="relative z-10">
-                <h3 className="font-serif italic font-normal text-xl sm:text-2xl text-paper">
-                  {h.title}
-                </h3>
-                <div className="font-mono text-[9px] sm:text-[10px] text-[#64FFDA] uppercase tracking-[1.5px] sm:tracking-[2px] mt-1 mb-3 sm:mb-4">
+                <div className="font-mono text-[9px] sm:text-[10px] text-paper uppercase tracking-[1.5px] sm:tracking-[2px] mb-3 sm:mb-4 transition-colors duration-300 group-hover:text-[#64FFDA]">
                   {h.sub}
                 </div>
-                <p className="text-paperdim text-[13px] sm:text-sm leading-relaxed max-w-sm mx-auto">
+                <p className="text-paperdim text-[13px] sm:text-sm leading-relaxed">
                   {h.desc}
                 </p>
               </div>
 
-              {/* static row of items — icon + name, uniquely colored per item,
-                  no animation of any kind. 2-up on phones so each pill has
-                  enough room for longer labels (e.g. "Anime OST") without
-                  the text spilling past its own border; 3-up from sm+. */}
+              {/* static row of items — icon + name, uniquely colored icon,
+                  navy pill background, no animation of any kind. 2-up on
+                  phones so each pill has enough room for longer labels
+                  (e.g. "Anime OST") without the text spilling past its own
+                  border; 3-up from sm+. */}
               <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 w-full">
                 {h.items.map((item) => (
                   <div
                     key={item.label}
-                    className="flex items-center justify-start gap-1.5 sm:gap-2 min-w-0 rounded-full pl-1.5 sm:pl-2 pr-2.5 sm:pr-3.5 py-1.5 border backdrop-blur-sm transition-transform duration-300 group-hover:scale-[1.03]"
-                    style={{
-                      background: `linear-gradient(120deg, ${item.color}30 0%, ${item.color}0d 70%)`,
-                      borderColor: `${item.color}55`,
-                      boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08)`,
-                    }}
+                    className="flex items-center justify-start gap-1.5 sm:gap-2 min-w-0 rounded-md pl-1.5 sm:pl-2 pr-2.5 sm:pr-3.5 py-1.5 border border-[#64FFDA]/10 bg-[#0a1a2e]"
                   >
                     <span
-                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs sm:text-sm shrink-0"
+                      className="w-6 h-6 sm:w-7 sm:h-7 rounded-md flex items-center justify-center text-xs sm:text-sm shrink-0"
                       style={{
                         backgroundColor: `${item.color}25`,
                         border: `1px solid ${item.color}66`,
@@ -144,10 +132,7 @@ export default function HobbiesOrbit() {
                     >
                       {item.icon}
                     </span>
-                    <span
-                      className="font-mono text-[9.5px] sm:text-[11px] uppercase tracking-wide truncate min-w-0"
-                      style={{ color: item.color }}
-                    >
+                    <span className="font-mono text-[9.5px] sm:text-[11px] uppercase tracking-wide truncate min-w-0 text-paper">
                       {item.label}
                     </span>
                   </div>

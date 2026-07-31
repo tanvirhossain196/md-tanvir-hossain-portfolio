@@ -52,7 +52,7 @@ const projects: Project[] = [
     image: "/images/projects/surepay.jpg",
     github: "https://github.com/tanvirhossain196/SurePay",
     live: "https://surepay.vercel.app/",
-    techTags: ["Node.js", "Express.js", "PostgreSQL", "NGINX"],
+    techTags: ["HTML5", "CSS", "JAVASCRIPTIES6)"],
   },
   {
     id: "learnroom",
@@ -65,14 +65,7 @@ const projects: Project[] = [
     image: "/images/projects/learnroom.jpg",
     github: "https://github.com/tanvirhossain196/Google-Classroom",
     live: "https://classroom479.vercel.app/",
-    techTags: [
-      "HTML5",
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "MongoDB",
-      "Passport.js",
-    ],
+    techTags: ["HTML5", "CSS", "JavaScript"],
   },
   {
     id: "mess-management",
@@ -85,7 +78,7 @@ const projects: Project[] = [
     image: "/images/projects/mess-management.jpg",
     github: "#",
     live: "#",
-    techTags: ["Java", "Android Studio", "Firebase"],
+    techTags: ["Java", "Android Studio", "SQLite", "Firebase"],
   },
 ];
 
