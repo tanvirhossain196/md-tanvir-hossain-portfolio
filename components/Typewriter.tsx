@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-const roles = ["Software Engineer", "Full-Stack Developer (Frontend Focused)", "ReactJS Enthusiast","NextJS Expert"];
+const roles = [
+  "Software Engineer",
+  "Frontend Developer",
+  "ReactJS Enthusiast",
+  "Next.js Developer",
+];
 
 const TYPE_SPEED = 40;
 const DELETE_SPEED = 30;
