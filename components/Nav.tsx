@@ -133,7 +133,7 @@ function MobileMenu({
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-[90] bg-[#0e2a42]/60 backdrop-blur-sm transition-opacity duration-200 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
+        className={`fixed inset-0 z-[90] bg-[#0e2a42]/60 backdrop-blur-[2px] transition-opacity duration-200 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -155,7 +155,7 @@ function MobileMenu({
             : "pointer-events-none translate-x-full"
         }`}
       >
-        <div className="relative flex h-full flex-col overflow-hidden shadow-[-25px_0_70px_-15px_rgba(0,0,0,0.75)] bg-[#0e2a42]">
+        <div className="relative flex h-full flex-col overflow-hidden bg-[#0e2a42]">
           {/* Single-column nav list — scrolls internally if it overflows
               the sidebar's height. Top padding clears the fixed navbar
               that sits above this panel in stacking order. */}
