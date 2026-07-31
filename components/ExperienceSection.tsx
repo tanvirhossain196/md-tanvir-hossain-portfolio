@@ -71,24 +71,18 @@ export default function ExperienceSection() {
               <div
                 key={exp.role}
                 tabIndex={0}
-                className="group relative flex text-left rounded-lg border border-[#ede8dc]/35 overflow-hidden transition-all duration-300 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.45)] hover:border-[#64FFDA] focus-visible:border-[#64FFDA] hover:-translate-y-1.5 focus-visible:-translate-y-1.5 hover:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] focus-visible:shadow-[0_20px_45px_-15px_rgba(100,255,218,0.35)] outline-none focus-visible:ring-1 focus-visible:ring-[#64FFDA]/50"
+                className="group relative flex text-left rounded-lg border border-[#ede8dc]/35 overflow-hidden transition-colors duration-300 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.45)] hover:border-[#64FFDA] focus-visible:border-[#64FFDA] outline-none focus-visible:ring-1 focus-visible:ring-[#64FFDA]/50"
                 style={{
                   background:
                     "linear-gradient(165deg, #17324c 0%, #0e2338 55%, #0a1e2e 100%)",
                 }}
               >
-                {/* Diagonal shine sweep — same treatment as the Projects
-                    section cards, for a consistent hover motion across the site. */}
-                <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-                  <div className="absolute top-0 -left-1/2 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-[#64FFDA]/15 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[1100ms] ease-out" />
-                </div>
-
                 {/* Main content */}
                 <div className="relative z-10 flex-1 min-w-0 p-5 sm:p-6 lg:p-7">
                   <div className="flex items-start gap-3">
                     {/* Role icon — sits directly with the title instead of
                         living in a separate spine column. */}
-                    <div className="shrink-0 mt-0.5 w-9 h-9 sm:w-10 sm:h-10 rounded-md border border-[#64FFDA]/30 bg-[#64FFDA]/10 flex items-center justify-center">
+                    <div className="shrink-0 mt-0.5 w-9 h-9 sm:w-10 sm:h-10 rounded-md border border-[#64FFDA]/30 bg-[#64FFDA]/10 flex items-center justify-center transition-colors duration-300 group-hover:border-[#64FFDA]/60">
                       <Briefcase
                         size={16}
                         strokeWidth={1.75}
@@ -96,7 +90,7 @@ export default function ExperienceSection() {
                       />
                     </div>
                     <div className="min-w-0">
-                      <h3 className="font-display text-base sm:text-lg lg:text-xl text-paper leading-snug break-words">
+                      <h3 className="font-display text-base sm:text-lg lg:text-xl text-paper leading-snug break-words transition-colors duration-300 group-hover:text-[#64FFDA]">
                         {exp.role}
                       </h3>
                       <div className="text-paperdim text-xs sm:text-sm mt-1 break-words">

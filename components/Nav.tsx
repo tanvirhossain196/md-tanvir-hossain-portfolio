@@ -96,10 +96,10 @@ function Logo() {
 // (nothing "pops" in/out — it smoothly rotates/slides into the X shape).
 function MenuToggleIcon({ open }: { open: boolean }) {
   return (
-    <span className="relative flex h-[14px] w-[18px] flex-col justify-between">
+    <span className="relative flex h-4 w-[22px] flex-col justify-between">
       <span
         className={`block h-[2px] w-full origin-center rounded-full bg-current transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-          open ? "translate-y-[6px] rotate-45" : ""
+          open ? "translate-y-[7px] rotate-45" : ""
         }`}
       />
       <span
@@ -109,13 +109,12 @@ function MenuToggleIcon({ open }: { open: boolean }) {
       />
       <span
         className={`block h-[2px] w-full origin-center rounded-full bg-current transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-          open ? "-translate-y-[6px] -rotate-45" : ""
+          open ? "-translate-y-[7px] -rotate-45" : ""
         }`}
       />
     </span>
   );
 }
-
 
 function MobileMenu({
   open,
@@ -134,43 +133,33 @@ function MobileMenu({
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-[90] bg-[#050b14]/70 backdrop-blur-sm transition-opacity duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
+        className={`fixed inset-0 z-[90] bg-[#0e2a42]/60 backdrop-blur-sm transition-opacity duration-200 ease-[cubic-bezier(0.65,0,0.35,1)] lg:hidden ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       />
 
-      {/* Panel — anchored top-left like a real dropdown on tablet, full-
-          width on narrow phones. Capped at 3/4 of the viewport height on
-          mobile/tablet so it never covers the whole screen; the nav list
-          scrolls internally (flex-1 + overflow-y-auto) if it doesn't fit,
-          while the resume-download footer stays pinned at the bottom. */}
+      {/* Panel — a full-height sidebar that slides in from the right edge
+          of the screen. It runs the full viewport height (sitting behind
+          the navbar in stacking order) and shares the exact same solid
+          color as the navbar, so the two read as one continuous surface
+          with no seam or divider where they meet. */}
       <div
         role="dialog"
         aria-modal="true"
         aria-hidden={!open ? "true" : "false"}
-        className={`fixed inset-x-4 top-[72px] z-[220] max-h-[75vh] origin-top-left transform-gpu transition-all duration-500 ease-out will-change-transform sm:inset-x-auto sm:right-auto sm:left-5 sm:w-[380px] lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-[95] w-[82vw] max-w-[360px] transform-gpu transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] will-change-transform lg:hidden ${
           open
-            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none -translate-y-4 scale-[0.96] opacity-0"
+            ? "pointer-events-auto translate-x-0"
+            : "pointer-events-none translate-x-full"
         }`}
       >
-        <div
-          className="relative flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-[#64FFDA]/25 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] backdrop-blur-md"
-          style={{
-            background:
-              "linear-gradient(145deg, rgba(20,42,68,0.4) 0%, rgba(14,30,52,0.4) 45%, rgba(10,22,38,0.4) 100%)",
-          }}
-        >
-          {/* Single ambient glow — one blur layer instead of three, keeps
-              paint cost low while still giving the panel some depth. */}
-          <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-[#64FFDA]/10 blur-[50px]" />
-
-          {/* Single-column nav list — scrolls internally once the panel
-              hits its 75vh cap, so overflowing items never push the panel
-              past 3/4 of the screen. */}
-          <ul className="relative m-0 flex min-h-0 flex-1 flex-col overflow-y-auto px-2 pt-3 pb-2 list-none">
+        <div className="relative flex h-full flex-col overflow-hidden shadow-[-25px_0_70px_-15px_rgba(0,0,0,0.75)] bg-[#0e2a42]">
+          {/* Single-column nav list — scrolls internally if it overflows
+              the sidebar's height. Top padding clears the fixed navbar
+              that sits above this panel in stacking order. */}
+          <ul className="relative m-0 flex min-h-0 flex-1 flex-col overflow-y-auto px-2 pt-[88px] pb-2 list-none">
             {navLinks.map((link, index) => {
               const id = link.href.replace("#", "");
               const isActive = activeSection === id && id !== "home";
@@ -216,7 +205,7 @@ function MobileMenu({
                       className={`flex-1 font-sans text-[12.5px] font-medium uppercase tracking-[1.5px] transition-colors duration-300 ${
                         isActive
                           ? "text-paper"
-                          : "text-paperdim/75 group-hover:text-paper"
+                          : "text-paper/90 group-hover:text-paper"
                       }`}
                     >
                       {link.label}
@@ -390,7 +379,20 @@ export default function Nav() {
         />
       </div>
 
-      <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 bg-[#0a1420]/25 backdrop-blur-xl border-b border-[#64FFDA]/10 shadow-[0_4px_30px_rgba(0,0,0,0.35)]">
+      <nav
+        className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-5 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-[5vw] py-4 transition-colors duration-300"
+        style={
+          menuOpen
+            ? { background: "#0e2a42" }
+            : {
+                background:
+                  "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
+                backgroundAttachment: "fixed",
+                backgroundSize: "100vw 100vh",
+                backgroundPosition: "top left",
+              }
+        }
+      >
         {/* Logo - Left */}
         <a href="#home" className="group shrink-0 flex items-center">
           <Logo />
@@ -401,20 +403,10 @@ export default function Nav() {
           <ul className="relative flex items-center gap-1.5 xl:gap-2 list-none m-0 p-0">
             {/* Sliding Indicator */}
             <span
-              className="absolute top-1/2 -translate-y-1/2 h-8 rounded-full bg-[#64FFDA]/10 border border-[#64FFDA]/50 shadow-[0_0_16px_-2px_rgba(100,255,218,0.45)] transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] pointer-events-none"
+              className="absolute top-1/2 -translate-y-1/2 h-8 rounded-full bg-[#64FFDA]/10 border border-[#64FFDA]/50 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] pointer-events-none"
               style={{
                 left: indicator.left,
                 width: indicator.width,
-                opacity: indicator.opacity,
-              }}
-            />
-            {/* Glowing Dot */}
-            <span
-              className="absolute -top-2.5 -translate-y-0 w-1 h-1 rounded-full bg-[#64FFDA] shadow-[0_0_8px_2px_rgba(100,255,218,0.7)] transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] pointer-events-none"
-              style={{
-                left: indicator.width
-                  ? indicator.left + indicator.width / 2 - 2
-                  : 0,
                 opacity: indicator.opacity,
               }}
             />
@@ -433,7 +425,7 @@ export default function Nav() {
                     className={`relative z-10 font-sans text-[11px] lg:text-[12px] font-medium tracking-[2px] uppercase px-3.5 lg:px-4 py-1.5 rounded-full border transition-all duration-300 whitespace-nowrap ${
                       isActive
                         ? "text-paper border-transparent"
-                        : "text-paperdim/65 border-transparent hover:text-paper hover:bg-[#64FFDA]/10 hover:border-[#64FFDA]/50 hover:shadow-[0_0_16px_-2px_rgba(100,255,218,0.45)]"
+                        : "text-paperdim/85 border-transparent hover:text-[#64FFDA]"
                     }`}
                   >
                     {link.label}
@@ -463,10 +455,8 @@ export default function Nav() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen ? "true" : "false"}
-            className={`lg:hidden relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-              menuOpen
-                ? "border-[#64FFDA]/60 bg-[#64FFDA]/10 text-[#64FFDA] shadow-[0_0_16px_-2px_rgba(100,255,218,0.45)]"
-                : "border-line/60 text-paperdim hover:border-[#64FFDA]/50 hover:text-[#64FFDA]"
+            className={`lg:hidden relative flex h-10 w-10 shrink-0 items-center justify-center transition-colors duration-300 ${
+              menuOpen ? "text-[#64FFDA]" : "text-paperdim hover:text-[#64FFDA]"
             }`}
           >
             <MenuToggleIcon open={menuOpen} />

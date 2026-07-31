@@ -41,6 +41,8 @@ export default function HomeSection() {
         background:
           "linear-gradient(135deg, #0f182b 0%, #0d3450 55%, #0c4a6e 100%)",
         backgroundAttachment: "fixed",
+        backgroundSize: "100vw 100vh",
+        backgroundPosition: "top left",
       }}
     >
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.3fr_1.15fr] gap-12 lg:gap-10 xl:gap-16 items-center w-full max-w-[1800px] mx-auto">

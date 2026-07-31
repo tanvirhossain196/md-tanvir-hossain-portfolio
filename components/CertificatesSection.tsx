@@ -67,14 +67,14 @@ export default function CertificatesSection() {
           {certificates.map((c) => (
             <div
               key={c.title}
-              className="group relative rounded-lg border border-[#F5F1E8]/25 backdrop-blur-sm p-6 overflow-hidden"
+              className="group relative rounded-lg border border-[#F5F1E8]/25 backdrop-blur-sm p-6 overflow-hidden transition-colors duration-500 hover:border-[#64FFDA]/60"
               style={{
                 background:
                   "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",
               }}
             >
               <div className="relative z-10 flex items-start justify-between mb-5">
-                <div className="w-11 h-11 rounded-lg bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center">
+                <div className="w-11 h-11 rounded-lg bg-[#64FFDA]/10 border border-[#64FFDA]/30 flex items-center justify-center transition-colors duration-300 group-hover:border-[#64FFDA]/60">
                   <c.icon
                     size={20}
                     strokeWidth={2}

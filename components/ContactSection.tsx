@@ -106,22 +106,26 @@ export default function ContactSection() {
 
             <div className="flex gap-4 mt-8">
               {socials.map(({ label, Icon, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full border border-[#F5F1E8]/50 flex items-center justify-center text-paper/80 hover:border-[#64FFDA] hover:text-[#64FFDA] transition-colors"
-                >
-                  <Icon size={15} />
-                </a>
+                <div key={label} className="relative group/social">
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-10 h-10 rounded-full border border-[#F5F1E8]/50 flex items-center justify-center text-paper/80 hover:border-[#64FFDA] hover:text-[#64FFDA] transition-colors"
+                  >
+                    <Icon size={15} />
+                  </a>
+                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0a1a2e] border border-[#64FFDA]/20 px-2.5 py-1 font-mono text-[10px] text-paper opacity-0 group-hover/social:opacity-100 transition-opacity duration-200 z-10">
+                    {label}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
 
           <div
-            className="rounded-xl border border-[#F5F1E8]/25 p-8"
+            className="rounded-lg border border-[#F5F1E8]/25 p-8"
             style={{
               background:
                 "linear-gradient(165deg, #16324a 0%, #112742 55%, #0d1f36 100%)",

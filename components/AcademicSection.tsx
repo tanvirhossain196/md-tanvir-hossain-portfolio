@@ -95,12 +95,9 @@ export default function AcademicSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1626] via-[#0a1626]/10 to-transparent opacity-80" />
 
                 {/* Year badge */}
-                <span className="absolute top-4 right-4 font-mono text-[11px] font-semibold bg-[#64FFDA]/20 text-[#64FFDA] px-3 py-1.5 rounded-full border border-[#64FFDA]/40 backdrop-blur-sm transition-all duration-300 group-hover:bg-[#64FFDA]/30 group-hover:border-[#64FFDA]/70">
+                <span className="absolute top-4 right-4 font-mono text-[11px] font-semibold bg-[#64FFDA]/20 text-[#64FFDA] px-3 py-1.5 rounded-full border border-[#64FFDA]/40 backdrop-blur-sm transition-colors duration-300 group-hover:bg-[#64FFDA]/30 group-hover:border-[#64FFDA]/70">
                   {m.year}
                 </span>
-
-                {/* subtle glow line under image on hover */}
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#64FFDA]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content */}
