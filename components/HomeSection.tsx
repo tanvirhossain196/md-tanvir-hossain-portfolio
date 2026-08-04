@@ -68,8 +68,10 @@ export default function HomeSection() {
             <Typewriter />
           </div>
           <p className="text-paperdim text-lg mt-6 max-w-xl mx-auto lg:mx-0">
-            A passionate and curious learner who loves to explore the world of
-            technology — bridging AI, design, and engineering.
+            Front-end developer skilled in React.js, Next.js, TypeScript,
+            JavaScript, and Tailwind CSS. I build clean, responsive, and
+            user-friendly web applications with modern technologies. Let's
+            create something amazing together!
           </p>
           <div className="flex justify-center lg:justify-start gap-4 mt-8">
             {socials.map((social) => {
@@ -121,11 +123,17 @@ export default function HomeSection() {
             monitor or undersized on a laptop. Width follows automatically
             from the 4:5 aspect ratio. */}
         <div className="order-3 flex justify-center">
-          <div
-            className="w-full aspect-[4/5] max-w-[440px] rounded-lg bg-panelsolid border border-line overflow-hidden
-              lg:w-auto lg:max-w-none lg:aspect-[4/5] lg:h-[clamp(380px,34vw,500px)]"
-          >
-            <PhotoSlideshow />
+          <div className="relative w-full max-w-[440px] lg:w-auto lg:max-w-none">
+            <div
+              className="relative w-full aspect-[4/5] rounded-lg bg-panelsolid overflow-hidden
+                border border-[#64FFDA]/40
+                shadow-[0_18px_40px_-8px_rgba(2,10,25,0.9)]
+                lg:w-auto lg:aspect-[4/5] lg:h-[clamp(380px,34vw,500px)]"
+            >
+              <PhotoSlideshow />
+              {/* Subtle bottom-to-top depth overlay so the frame reads as one composed panel, not a flat cutout */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f182b]/45 via-transparent to-transparent" />
+            </div>
           </div>
         </div>
       </div>

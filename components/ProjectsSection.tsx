@@ -41,6 +41,30 @@ const projects: Project[] = [
       "Cloudinary",
     ],
   },
+
+  {
+    id: "Job-Application-Tracker",
+    tag: "HTML5 · CSS · JAVASCRIPT · NODE.JS · MONGODB",
+    category: "WEB APP FULL STACK",
+    title: "Job Application Tracker",
+    desc: "A web application for tracking job applications with features for managing contacts, follow-ups, and application status.",
+    fullDesc:
+      "Developed a web application for tracking job applications with features for managing contacts, follow-ups, and application status.",
+    image: "/images/projects/job-track.jpg",
+    github:
+      "https://github.com/tanvirhossain196/Personal-Job-Mail-Tracking-Full-Stack",
+    live: "https://personal-job-mail-tracking-full-sta.vercel.app/",
+    techTags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "NextAuth.js",
+      "PostgreSql",
+      "Node.js",
+      "Express.js",
+    ],
+  },
+
   {
     id: "surepay",
     tag: "NODE.JS · EXPRESS.JS · POSTGRESQL · NGINX",
