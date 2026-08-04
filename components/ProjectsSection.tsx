@@ -100,7 +100,7 @@ const projects: Project[] = [
     fullDesc:
       "Designed and developed a mobile application for managing mess members, daily meals, and monthly expense calculations. Implemented real-time data storage and authentication using Firebase to ensure secure and efficient data handling.",
     image: "/images/projects/mess-management.jpg",
-    github: "#",
+    github: "https://github.com/tanvirhossain196/Mess-Manage-Android-App",
     live: "#",
     techTags: ["Java", "Android Studio", "SQLite", "Firebase"],
   },
