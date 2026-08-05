@@ -22,7 +22,7 @@ const projects: Project[] = [
   {
     id: "event-flow",
     tag: "REACT.JS · NODE.JS · EXPRESS.JS · SUPABASE",
-    category: "WEB APPLICATION",
+    category: "Web Application",
     title: "Event Flow",
     desc: "Full-stack university event management and recommendation system with secure authentication, QR-based attendance, and media management.",
     fullDesc:
@@ -45,7 +45,7 @@ const projects: Project[] = [
   {
     id: "Job-Application-Tracker",
     tag: "HTML5 · CSS · JAVASCRIPT · NODE.JS · MONGODB",
-    category: "WEB APP FULL STACK",
+    category: "Web App Full Stack",
     title: "Job Application Tracker",
     desc: "A web application for tracking job applications with features for managing contacts, follow-ups, and application status.",
     fullDesc:
@@ -68,7 +68,7 @@ const projects: Project[] = [
   {
     id: "surepay",
     tag: "NODE.JS · EXPRESS.JS · POSTGRESQL · NGINX",
-    category: "MOBILE BANKING SYSTEM",
+    category: "Mobile Banking System",
     title: "SurePay",
     desc: "Secure mobile banking backend with SSL encryption and an NGINX reverse proxy for load balancing and performance.",
     fullDesc:
@@ -76,26 +76,49 @@ const projects: Project[] = [
     image: "/images/projects/surepay.jpg",
     github: "https://github.com/tanvirhossain196/SurePay",
     live: "https://surepay.vercel.app/",
-    techTags: ["HTML5", "CSS", "JAVASCRIPTIES6)"],
+    techTags: ["HTML5", "CSS3", "JavaScript"],
   },
+
+  {
+    id: "mess-calculator",
+    tag: "JAVASCRIPT · SUPABASE · POSTGRESQL · REALTIME",
+    category: "Shared Expense Manage System Full Stack",
+    title: "Mess Calculator",
+    desc: "Automated household/mess expense sharing app with real-time sync, role-based access, and PDF/Excel export.",
+    fullDesc:
+      "Built a full-featured household cost-sharing platform using vanilla JavaScript with a Supabase (PostgreSQL) backend. Implemented Row Level Security policies for multi-tenant mess isolation, real-time data sync across members via Supabase Realtime channels, role-based access control for Moderators and Members, payment request/dispute workflows, and automated PDF/PNG/Excel report generation using jsPDF and SheetJS.",
+    image: "/images/projects/mess-calculator-web.jpg",
+    github: "https://github.com/tanvirhossain196/Mess-Automated-System",
+    live: "https://tanvirs-mess.netlify.app/",
+    techTags: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Supabase",
+      "PostgreSQL",
+      "jsPDF",
+      "SheetJS",
+    ],
+  },
+
   {
     id: "learnroom",
     tag: "HTML5 · CSS · JAVASCRIPT · NODE.JS · MONGODB",
-    category: "WEB APPLICATION",
+    category: "Web Application",
     title: "Learnroom",
     desc: "Role-based online classroom platform with secure authentication and RESTful APIs for managing users, courses, and assignments.",
     fullDesc:
       "Developed a role-based online classroom platform with secure authentication and RESTful APIs for managing users, courses, and assignments.",
-    image: "/images/projects/learnroom.jpg",
+    image: "/images/projects/learnrooms.jpg",
     github: "https://github.com/tanvirhossain196/Google-Classroom",
     live: "https://classroom479.vercel.app/",
-    techTags: ["HTML5", "CSS", "JavaScript"],
+    techTags: ["HTML5", "CSS3", "JavaScript"],
   },
   {
     id: "mess-management",
     tag: "JAVA · ANDROID STUDIO · FIREBASE",
-    category: "MOBILE APPLICATION",
-    title: "Mess Manage",
+    category: "Mobile Application",
+    title: "Mess Manage Android App",
     desc: "Mobile app for managing mess members, daily meals, and monthly expense calculations with real-time data storage.",
     fullDesc:
       "Designed and developed a mobile application for managing mess members, daily meals, and monthly expense calculations. Implemented real-time data storage and authentication using Firebase to ensure secure and efficient data handling.",
