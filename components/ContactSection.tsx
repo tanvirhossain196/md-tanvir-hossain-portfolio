@@ -9,7 +9,6 @@ import {
   FaGithub,
   FaPaperPlane,
   FaEnvelope,
-  FaPhoneAlt,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 
@@ -95,12 +94,16 @@ export default function ContactSection() {
                 <FaEnvelope className="text-[#64FFDA]" />
                 <span>mdtanvirhossain4680@gmail.com</span>
               </a>
+            </div>
+
+            <div className="flex gap-4 mt-5">
               <a
-                href="tel:+8801616122600"
-                className="flex items-center gap-3 hover:text-[#64FFDA] transition-colors w-fit"
+                href="https://wa.me/8801616122600"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-md border-2 border-[#64FFDA]/60 px-8 py-3.5 text-[#64FFDA] font-mono text-base tracking-wide uppercase font-semibold hover:border-[#64FFDA] hover:bg-[#64FFDA]/10 transition-colors"
               >
-                <FaPhoneAlt className="text-[#64FFDA]" />
-                <span>+880 1616-122600</span>
+                <span>Hire Me</span>
               </a>
             </div>
 
