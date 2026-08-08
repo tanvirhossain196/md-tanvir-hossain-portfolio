@@ -67,7 +67,7 @@ export default function HomeSection() {
               Md Tanvir Hossain
             </h2>
           </div>
-          <div className="font-mono text-[#64FFDA] text-xl lg:text-2xl mt-5">
+          <div className="font-mono text-[#64FFDA] text-lg lg:text-2xl mt-5">
             <Typewriter />
           </div>
           <p className="text-paperdim text-lg mt-6 max-w-xl mx-auto lg:mx-0 text-balance">
@@ -102,7 +102,7 @@ export default function HomeSection() {
                 row without wrapping or overflow. */}
             <a
               href="#about"
-              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[124px] items-center justify-center overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3 font-mono text-[12px] sm:text-[13px] lg:text-[14px] tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <span className="relative z-10">About Me</span>
@@ -112,7 +112,7 @@ export default function HomeSection() {
               href="https://wa.me/8801616122600"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] font-semibold tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[124px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3 font-mono text-[12px] sm:text-[13px] lg:text-[14px] font-semibold tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <Handshake
@@ -125,7 +125,7 @@ export default function HomeSection() {
 
             <a
               href="#projects"
-              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] font-semibold uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[124px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3 font-mono text-[12px] sm:text-[13px] lg:text-[14px] font-semibold uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <span className="relative z-10">View Work</span>
