@@ -12,6 +12,7 @@ import {
   Gamepad2,
   Mail,
   ArrowUpRight,
+  Handshake,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -233,16 +234,29 @@ function MobileMenu({
               transitionDelay: open ? `${40 + navLinks.length * 30}ms` : "0ms",
             }}
           >
-            <a
-              href={RESUME_PDF_PATH}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={onClose}
-              className="flex items-center justify-center gap-2 rounded-xl border border-[#64FFDA]/80 bg-transparent px-5 py-3 font-sans text-[13px] font-semibold tracking-[1px] text-[#64FFDA] transition-colors duration-300 hover:bg-[#64FFDA] hover:text-[#0A0A0C]"
-            >
-              <DownloadIcon />
-              Download Resume
-            </a>
+            <div className="flex items-center justify-center gap-8">
+              <a
+                href={RESUME_PDF_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="flex items-center justify-center gap-2 rounded-md border border-[#F5F1E8]/60 bg-transparent px-4 py-3 font-sans text-[13px] font-semibold tracking-[1px] text-paper transition-colors duration-300 hover:border-[#64FFDA] hover:text-[#64FFDA] hover:bg-[#64FFDA]/10"
+              >
+                <DownloadIcon />
+                Resume
+              </a>
+
+              <a
+                href="https://wa.me/8801616122600"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="flex items-center justify-center gap-2 rounded-md border border-[#F5F1E8]/60 bg-transparent px-4 py-3 font-sans text-[13px] font-semibold tracking-[1px] text-paper transition-colors duration-300 hover:border-[#64FFDA] hover:text-[#64FFDA] hover:bg-[#64FFDA]/10"
+              >
+                <Handshake size={15} strokeWidth={2.2} />
+                Hire Me
+              </a>
+            </div>
           </div>
         </div>
       </div>

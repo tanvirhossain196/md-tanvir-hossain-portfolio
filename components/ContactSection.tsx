@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SectionWatermark from "@/components/SectionWatermark";
+import { Handshake } from "lucide-react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -77,9 +78,9 @@ export default function ContactSection() {
               Get In Touch
             </div>
             <h2 className="font-display text-[clamp(32px,5vw,50px)] text-paper leading-tight">
-              Let&apos;s Work
+              Have A Project
               <br />
-              <em className="text-[#64FFDA] not-italic italic">Together</em>
+              <em className="text-[#64FFDA] not-italic italic">In Mind !?</em>
             </h2>
             <p className="text-paperdim mt-5 max-w-sm">
               Have a project in mind or want to collaborate? Feel free to reach
@@ -101,8 +102,9 @@ export default function ContactSection() {
                 href="https://wa.me/8801616122600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-md border-2 border-[#64FFDA]/60 px-8 py-3.5 text-[#64FFDA] font-mono text-base tracking-wide uppercase font-semibold hover:border-[#64FFDA] hover:bg-[#64FFDA]/10 transition-colors"
+                className="inline-flex items-center gap-2 rounded border-2 border-[#F5F1E8]/60 px-5 py-2 text-paper font-mono text-base tracking-wide uppercase font-semibold hover:border-[#64FFDA] hover:text-[#64FFDA] hover:bg-[#64FFDA]/10 transition-colors"
               >
+                <Handshake size={18} strokeWidth={2.2} />
                 <span>Hire Me</span>
               </a>
             </div>
