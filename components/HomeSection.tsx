@@ -51,21 +51,23 @@ export default function HomeSection() {
           <OrbitSkills />
         </div>
         <div className="order-1 lg:order-2 text-center lg:text-left">
-          <div className="font-mono text-[#64FFDA] text-sm tracking-[3px] uppercase mb-5">
-            Hello, I&apos;m
+          <div className="inline-block text-left">
+            <div className="font-mono text-[#64FFDA] text-sm tracking-[3px] uppercase mb-5">
+              Hello, I&apos;m
+            </div>
+            {/* Two separate clamp formulas (below lg / from lg) because the
+                layout itself changes shape at that breakpoint — single
+                full-width column below lg, a narrower ~1.3fr grid column
+                from lg onward. Sizing off one continuous vw formula across
+                that boundary would make the name overflow/wrap right at
+                the breakpoint since the available width suddenly shrinks.
+                whitespace-nowrap + these two safe ranges keep "Md Tanvir
+                Hossain" on one line at every screen size. */}
+            <h2 className="font-serif font-light italic text-paper leading-[1.05] tracking-tight whitespace-nowrap text-[clamp(32px,8vw,58px)] lg:text-[clamp(30px,3vw,60px)]">
+              Md Tanvir Hossain
+            </h2>
           </div>
-          {/* Two separate clamp formulas (below lg / from lg) because the
-              layout itself changes shape at that breakpoint — single
-              full-width column below lg, a narrower ~1.3fr grid column
-              from lg onward. Sizing off one continuous vw formula across
-              that boundary would make the name overflow/wrap right at
-              the breakpoint since the available width suddenly shrinks.
-              whitespace-nowrap + these two safe ranges keep "Md Tanvir
-              Hossain" on one line at every screen size. */}
-          <h2 className="font-serif font-light italic text-paper leading-[1.05] tracking-tight whitespace-nowrap text-[clamp(28px,6.5vw,50px)] lg:text-[clamp(30px,3vw,60px)]">
-            Md Tanvir Hossain
-          </h2>
-          <div className="font-mono text-[#64FFDA] text-xl md:text-2xl mt-5">
+          <div className="font-mono text-[#64FFDA] text-xl lg:text-2xl mt-5">
             <Typewriter />
           </div>
           <p className="text-paperdim text-lg mt-6 max-w-xl mx-auto lg:mx-0 text-balance">
