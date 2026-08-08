@@ -1,6 +1,7 @@
 import OrbitSkills from "@/components/OrbitSkills";
 import Typewriter from "@/components/Typewriter";
 import PhotoSlideshow from "@/components/PhotoSlideshow";
+import { Handshake } from "lucide-react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -67,13 +68,13 @@ export default function HomeSection() {
           <div className="font-mono text-[#64FFDA] text-xl md:text-2xl mt-5">
             <Typewriter />
           </div>
-          <p className="text-paperdim text-lg mt-6 max-w-xl mx-auto lg:mx-0">
+          <p className="text-paperdim text-lg mt-6 max-w-xl mx-auto lg:mx-0 text-balance">
             Front-end developer skilled in React.js, Next.js, TypeScript,
             JavaScript, and Tailwind CSS. I build clean, responsive, and
             user-friendly web applications with modern technologies. Let's
             create something amazing together!
           </p>
-          <div className="flex justify-center lg:justify-start gap-4 mt-8">
+          <div className="flex justify-center lg:justify-start gap-5 mt-8">
             {socials.map((social) => {
               const Icon = social.Icon;
               return (
@@ -90,29 +91,45 @@ export default function HomeSection() {
               );
             })}
           </div>
-          <div className="flex justify-center lg:justify-start gap-5 mt-9">
-            {/* Both buttons share one hover language now: a soft lift,
-                an accent glow shadow, and a diagonal light sweep that
-                travels across on hover — same easing on both so they
-                read as one consistent, deliberate interaction instead
-                of two different tricks. */}
+          <div className="flex flex-nowrap justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5 mt-9">
+            {/* All three buttons share one fixed width so they read as a
+                matched set, plus one hover language: a soft lift, an
+                accent glow border, and a diagonal light sweep across on
+                hover. Sized down slightly (vs. the original) and kept
+                nowrap so mobile/tablet still fit all three in a single
+                row without wrapping or overflow. */}
             <a
               href="#about"
-              className="group relative inline-flex items-center overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent px-7 py-3.5 font-mono text-sm tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <span className="relative z-10">About Me</span>
             </a>
 
             <a
+              href="https://wa.me/8801616122600"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] font-semibold tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+            >
+              <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
+              <Handshake
+                size={13}
+                strokeWidth={2.2}
+                className="relative z-10 shrink-0"
+              />
+              <span className="relative z-10">Hire Me</span>
+            </a>
+
+            <a
               href="#projects"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent px-7 py-3.5 font-mono text-sm font-semibold uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
+              className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] font-semibold uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
               <span className="relative z-10">View Work</span>
               <FaArrowRight
-                size={13}
-                className="relative z-10 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-1"
+                size={12}
+                className="relative z-10 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-1"
               />
             </a>
           </div>
