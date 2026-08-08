@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 
 const roles = [
-  "Software Engineer",
-  "Frontend Developer",
-  "ReactJS Enthusiast",
-  "Next.js Developer",
+  "Full-Stack Developer (MERN)",
+  "Frontend-Focused Engineer",
+  "Building With Node.js & Next.js",
 ];
 
 const TYPE_SPEED = 40;

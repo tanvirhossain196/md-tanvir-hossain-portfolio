@@ -77,14 +77,17 @@ export default function ContactSection() {
             <div className="font-mono text-[#64FFDA] text-xs tracking-[3px] uppercase mb-3">
               Get In Touch
             </div>
-            <h2 className="font-display text-[clamp(32px,5vw,50px)] text-paper leading-tight">
+            <h2
+              className="text-[clamp(32px,5vw,50px)] text-paper leading-tight"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            >
               Have A Project
               <br />
-              <em className="text-[#64FFDA] not-italic italic">In Mind !?</em>
+              <em className="text-[#64FFDA] not-italic italic">In Mind?</em>
             </h2>
             <p className="text-paperdim mt-5 max-w-sm">
-              Have a project in mind or want to collaborate? Feel free to reach
-              out — I&apos;d love to hear from you.
+              Want to collaborate? Feel free to reach out — I&apos;d love to
+              hear from you.
             </p>
 
             <div className="mt-8 space-y-3 font-mono text-sm text-[#CFEFE8]">
@@ -102,10 +105,15 @@ export default function ContactSection() {
                 href="https://wa.me/8801616122600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded border-2 border-[#F5F1E8]/60 px-5 py-2 text-paper font-mono text-base tracking-wide uppercase font-semibold hover:border-[#64FFDA] hover:text-[#64FFDA] hover:bg-[#64FFDA]/10 transition-colors"
+                className="group relative inline-flex w-[104px] sm:w-[125px] lg:w-[135px] items-center justify-center gap-1.5 overflow-hidden rounded-md border border-[#ede8dc]/50 bg-transparent py-3 sm:py-3 lg:py-3.5 font-mono text-[12px] sm:text-[13px] font-semibold tracking-wide uppercase text-[#ede8dc] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:-translate-y-0.5 hover:border-[#64FFDA] hover:text-[#64FFDA]"
               >
-                <Handshake size={18} strokeWidth={2.2} />
-                <span>Hire Me</span>
+                <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-full" />
+                <Handshake
+                  size={13}
+                  strokeWidth={2.2}
+                  className="relative z-10 shrink-0"
+                />
+                <span className="relative z-10">Hire Me</span>
               </a>
             </div>
 
